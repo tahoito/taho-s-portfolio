@@ -1,0 +1,51 @@
+---
+import { Mail } from "lucide-astro";
+import github from "../assets/icons/github.svg";
+import insta from "../assets/icons/insta.svg";
+---
+
+
+<section class="flex min-h-screen items-center justify-center bg-bg2 py-24">
+    <div class="mx-auto w-[1110px]">
+
+        <div class="text-center">
+            <h1 class="font-title text-[56px] font-medium">
+                Contact
+            </h1>
+
+            <p class="mt-4 text-[18px] leading-[30px]">
+                ご覧いただきありがとうございます。<br>
+                ご質問やご連絡がありましたら、お気軽にお問い合わせください。
+            </p>
+        </div>
+
+        <div class="mt-20 flex justify-center gap-8">
+
+            <a
+                href="mailto:xxxx@gmail.com"
+                class="flex h-[190px] w-[190px] flex-col items-center justify-center rounded-3xl border-2 border-cherry transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+            >
+                <Mail class="w-12 h-12 stroke-[3.5] text-black" />
+                <p class="mt-5 text-lg">Email</p>
+            </a>
+
+            <a
+                href=""
+                class="flex h-[190px] w-[190px] flex-col items-center justify-center rounded-3xl border-2 border-cherry transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+            >
+                <img src={github.src} alt="GitHub" class="w-12 h-12" />
+                <p class="mt-5 text-lg">GitHub</p>
+            </a>
+
+            <a
+                href=""
+                class="flex h-[190px] w-[190px] flex-col items-center justify-center rounded-3xl border-2 border-cherry transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+            >
+                <img src={insta.src} alt="Instagram" class="w-12 h-12" />
+                <p class="mt-5 text-lg">Instagram</p>
+            </a>
+
+        </div>
+
+    </div>
+</section>

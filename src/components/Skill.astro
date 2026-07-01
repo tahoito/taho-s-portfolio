@@ -1,11 +1,15 @@
-<section class="bg-bg2 py-24">
-    <div class="mx-auto flex w-[1110px] flex-col items-center gap-8">
+---
+import SkillCard from "../assets/SkillCard.astro";
+---
+
+<section id="skill" class="bg-bg2 py-24">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-8">
 
         <h1 class="font-title text-text-title text-[56px] font-medium">
             My Skill Set
         </h1>
 
-        <div class="w-[1110px]">
+        <div class="max-w-6xl">
 
             <p class="text-left text-[18px] text-text leading-[30px]">
                 これまでの学習や開発を通して身につけたスキルをまとめました。<br>
@@ -15,16 +19,45 @@
                 より実践的なシステム開発ができるエンジニアを目指しています。
             </p>
 
-            <div class="mt-8 grid grid-cols-2 gap-8">
-                <div class="h-[364px] bg-cherry-bg"></div>
+            <div class="mt-20 grid grid-cols-2 gap-10">
+                <SkillCard
+                title="プログラミング言語"
+                skills={[
+                    { name: "Python", level: 5 },
+                    { name: "PHP", level: 5 },
+                    { name: "JavaScript", level: 4 },
+                    { name: "JavaScript", level: 2 },
+                ]}
+                />
 
-                <div class="h-[364px] bg-cherry-bg"></div>
+                <SkillCard
+                title="フロントエンド"
+                skills={[
+                    { name: "HTML/CSS", level: 5 },
+                    { name: "Tailwind CSS", level: 5 },
+                    { name: "React", level: 4 },
+                    { name: "Next.js", level: 3 },
+                ]}
+                />
 
-                <div class="h-[364px] bg-cherry-bg"></div>
+                <SkillCard
+                title="バックエンド"
+                skills={[
+                    { name: "Laravel", level: 5 },
+                    { name: "Django", level: 5 },
+                    { name: "Flask", level: 4 },
+                    { name: "SpringBoot", level: 2 },
+                ]}
+                />
 
-                <div class="h-[364px]  bg-cherry-bg"></div>
+                <SkillCard
+                title="データベース"
+                skills={[
+                    { name: "MySQL", level: 5 },
+                    { name: "PostgreSQL", level: 3 },
+                ]}
+                />
             </div>
-
         </div>
 
     </div>

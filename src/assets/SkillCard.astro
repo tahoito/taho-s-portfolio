@@ -4,6 +4,7 @@ import Star from "../assets/icons/star.svg";
 interface Skill {
   name: string;
   level: number;
+  icon: ImageMetadata;
 }
 
 interface Props {
@@ -15,30 +16,37 @@ const { title, skills } = Astro.props;
 ---
 
 <div class="rounded-[16px] bg-cherry-bg p-8">
-  <h3 class="border-b border-text pb-2 text-[24px] font-medium">
-    {title}
-  </h3>
+    <h3 class="border-b border-text pb-2 text-[24px] font-medium">
+        {title}
+    </h3>
 
-  <div class="mt-8 grid grid-cols-2 gap-x-10 gap-y-8">
-    {skills.map((skill) => (
-      <div class="flex gap-4">
-        <div class="h-10 w-10 rounded-full bg-cherry"></div>
+    <div class="mt-8 grid grid-cols-2 gap-x-10 gap-y-8">
+        {skills.map((skill) => (
+        <div class="flex gap-4">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-bg1">
+            <img
+                src={skill.icon.src}
+                alt={skill.name}
+                class="h-6 w-6"
+            />
+            </div>
 
-        <div>
-          <p class="text-[18px]">{skill.name}</p>
+            <div>
+                <p class="text-[18px]">{skill.name}</p>
 
-          <div class="mt-1 flex gap-1">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                class:list={[
-                  "h-5 w-5",
-                  i < skill.level ? "opacity-100" : "opacity-20",
-                ]}
-              />
-            ))}
-          </div>
+                <div class="mt-1 flex gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                    <Star
+                        class:list={[
+                        "h-5 w-5",
+                        i < skill.level ? "opacity-100" : "opacity-20",
+                        ]}
+                    />
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
     ))}
-  </div>
+    </div>
 </div>
+

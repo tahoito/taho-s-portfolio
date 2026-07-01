@@ -1,5 +1,19 @@
 ---
 import SkillCard from "../assets/SkillCard.astro";
+import python from "../assets/icons/python.svg";
+import php from "../assets/icons/php.svg";
+import java from "../assets/icons/java.svg";
+import laravel from "../assets/icons/laravel.svg";
+import js from "../assets/icons/js.svg";
+import css from "../assets/icons/css.svg";
+import tailwindcss from "../assets/icons/tailwindcss.svg";
+import django from "../assets/icons/django.svg";
+import flask from "../assets/icons/flask.svg";
+import next from "../assets/icons/nextdotjs.svg";
+import react from "../assets/icons/react.svg";
+import springboot from "../assets/icons/springboot.svg";
+import postgresql from "../assets/icons/postgresql.svg";
+import mysql from "../assets/icons/mysql.svg";
 ---
 
 <section id="skill" class="bg-bg2 py-24">
@@ -21,40 +35,40 @@ import SkillCard from "../assets/SkillCard.astro";
 
             <div class="mt-20 grid grid-cols-2 gap-10">
                 <SkillCard
-                title="プログラミング言語"
-                skills={[
-                    { name: "Python", level: 5 },
-                    { name: "PHP", level: 5 },
-                    { name: "JavaScript", level: 4 },
-                    { name: "JavaScript", level: 2 },
-                ]}
+                    title="プログラミング言語"
+                    skills={[
+                        { name: "Python", level: 5, icon: python },
+                        { name: "PHP", level: 5, icon: php },
+                        { name: "JavaScript", level: 4, icon: js },
+                        { name: "Java", level: 3, icon: java },
+                    ]}
                 />
 
                 <SkillCard
                 title="フロントエンド"
                 skills={[
-                    { name: "HTML/CSS", level: 5 },
-                    { name: "Tailwind CSS", level: 5 },
-                    { name: "React", level: 4 },
-                    { name: "Next.js", level: 3 },
+                    { name: "HTML/CSS", level: 5, icon: css },
+                    { name: "Tailwind CSS", level: 5, icon: tailwindcss },
+                    { name: "React", level: 4 , icon: react },
+                    { name: "Next.js", level: 3, icon: next },
                 ]}
                 />
 
                 <SkillCard
                 title="バックエンド"
                 skills={[
-                    { name: "Laravel", level: 5 },
-                    { name: "Django", level: 5 },
-                    { name: "Flask", level: 4 },
-                    { name: "SpringBoot", level: 2 },
+                    { name: "Laravel", level: 5, icon: laravel },
+                    { name: "Django", level: 5, icon: django },
+                    { name: "Flask", level: 4, icon: flask },
+                    { name: "SpringBoot", level: 2, icon: springboot },
                 ]}
                 />
 
                 <SkillCard
                 title="データベース"
                 skills={[
-                    { name: "MySQL", level: 5 },
-                    { name: "PostgreSQL", level: 3 },
+                    { name: "MySQL", level: 5 , icon: mysql },
+                    { name: "PostgreSQL", level: 3 , icon: postgresql },
                 ]}
                 />
             </div>

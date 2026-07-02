@@ -1,64 +1,57 @@
-<section class="flex min-h-screen items-center justify-center bg-bg1">
-    <div class="flex flex-col items-center gap-4">
+---
+import WorkCard from "../assets/WorkCard.astro";
 
-        <h1 class="font-title text-text-title text-[56px] font-medium">
-            Works
-        </h1>
+import SmartManage from "../assets/works/smart-manage/1.png";
+import Tastie from "../assets/works/tastie/1.png";
+import Portfolio from "../assets/works/portfolio/1.png";
+import Amasupo from "../assets/works/amasupo/1.png";
+import Cafest from "../assets/works/cafest/1.png";
+import Cofit from "../assets/works/cofit/1.png";
 
-        <p class="text-center text-text text-[18px] leading-[30px]">
-            個人制作・チーム制作
-        </p>
+const works = [
+  {
+    name: "Smart Manage",
+    image: SmartManage,
+  },
+  {
+    name: "Tastie",
+    image: Tastie,
+  },
+  {
+    name: "Portfolio",
+    image: Portfolio,
+  },
+  {
+    name: "あますぽ",
+    image: Amasupo,
+  },
+  {
+    name: "Cafest",
+    image: Cafest,
+  },
+  {
+    name: "Cofit",
+    image: Cofit,
+  },
+];
+---
 
-        <div class="grid grid-cols-3 gap-8">
+<section id="works" class="flex min-h-screen items-center justify-center bg-bg1">
+  <div class="flex flex-col items-center gap-4">
 
-            <div class="group cursor-pointer">
-                <div class="h-[192px] w-[323px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
-                </div>
-                <p class="text-center text-text text-[18px] font-medium">
-                    Smart Manage
-                </p>
-            </div>
+    <h1 class="font-title text-[56px] font-medium text-text-title">
+      Works
+    </h1>
 
-            <div class="group cursor-pointer">
-                <div class="h-[192px] w-[323px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
-                </div>
-                <p class="text-text text-center text-[18px] font-medium">
-                    Tastie
-                </p>
-            </div>
+    <p class="text-center text-[18px] leading-[30px] text-text">
+      個人制作・チーム制作
+    </p>
 
-            <div class="group cursor-pointer">
-                <div class="h-[192px] w-[323px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
-                </div>
-                <p class="text-text text-center text-[18px] font-medium">
-                    Portfolio
-                </p>
-            </div>
-
-            <div class="group cursor-pointer">
-                <div class="h-[192px] w-[323px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
-                </div>
-                <p class="text-text text-center text-[18px] font-medium">
-                    あますぽ
-                </p>
-            </div>
-
-            <div class="group cursor-pointer">
-                <div class="h-[192px] w-[323px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
-                </div>
-                <p class="text-text text-center text-[18px] font-medium">
-                    Cafest
-                </p>
-            </div>
-
-            <div class="group cursor-pointer">
-                <div class="h-[192px] w-[323px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
-                </div>
-                <p class="text-text text-center text-[18px] font-medium">
-                    Cofit
-                </p>
-            </div>
-
-        </div>
+    <div class="grid grid-cols-3 gap-8 border: 1px solid #ECECEC;">
+      {works.map((work) => (
+        <WorkCard {...work} />
+      ))}
     </div>
+
+  </div>
 </section>

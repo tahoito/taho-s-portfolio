@@ -7,9 +7,13 @@ interface Props {
 }
 
 const { name, image } = Astro.props;
+const id = name.replace(/\s+/g, "-").toLowerCase();
 ---
 
-<div class="group mx-auto w-fit cursor-pointer">
+<div
+  class="group mx-auto w-fit cursor-pointer"
+  onclick={`document.getElementById('${id}')?.showModal()`}
+>
   <div class="h-[193px] w-[332px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
     <img
       src={image.src}
@@ -22,3 +26,65 @@ const { name, image } = Astro.props;
     {name}
   </p>
 </div>
+
+<dialog
+  id={id}
+  class="rounded-2xl p-0 backdrop:bg-black/70"
+>
+  <div class="relative w-[900px] bg-bg1">
+
+    <button
+      class="absolute right-5 top-5 text-3xl"
+      onclick={`document.getElementById('${id}')?.close()`}
+    >
+      ×
+    </button>
+
+    <div class="grid grid-cols-2 gap-8 p-8">
+
+      <!-- 左側 -->
+      <div>
+        <img
+          src={image.src}
+          alt={name}
+          class="rounded-lg"
+        />
+      </div>
+
+      <!-- 右側 -->
+      <div>
+
+        <h2 class="text-3xl font-bold">
+          {name}
+        </h2>
+
+        <p class="mt-4 text-text/70">
+          ここに作品の説明を書きます。
+        </p>
+
+        <div class="mt-8">
+          <h3 class="font-semibold">
+            Tech Stack
+          </h3>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="rounded bg-cherry px-3 py-1 text-white">
+              Astro
+            </span>
+
+            <span class="rounded bg-cherry px-3 py-1 text-white">
+              Tailwind
+            </span>
+
+            <span class="rounded bg-cherry px-3 py-1 text-white">
+              TypeScript
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</dialog>

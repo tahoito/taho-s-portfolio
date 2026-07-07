@@ -1,0 +1,36 @@
+---
+interface Props {
+  year: string;
+  title: string;
+  description: string[];
+  image: string;
+}
+
+const { year, title, description, image } = Astro.props;
+---
+
+<div class="grid grid-cols-[140px_140px_1fr] items-center mb-24">
+  <div class="text-right text-4xl font-bold text-primary">
+    {year}
+  </div>
+
+  <div class="relative flex justify-center">
+    <div class="absolute left-0 top-1/2 h-[6px] w-16 -translate-y-1/2 bg-primary"></div>
+
+    <img
+      src={image}
+      alt={title}
+      class="h-40 w-40 rounded-full object-cover"
+    />
+  </div>
+
+  <div class="ml-10">
+    <h3 class="text-xl font-semibold">{title}</h3>
+
+    {
+      description.map((text) => (
+        <p class="mt-2 text-gray-600">{text}</p>
+      ))
+    }
+  </div>
+</div>

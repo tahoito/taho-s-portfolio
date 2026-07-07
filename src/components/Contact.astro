@@ -20,10 +20,10 @@ import LinkedIn from "../assets/icons/LinkedIn.svg";
             </p>
         </div>
 
-        <div class="fade-item mt-20 flex justify-center gap-10">
+        <div class="mt-20 flex justify-center gap-10">
             <a
                 href="mailto:tahoito.dev@gmail.com"
-                class="flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
+                class="contact-card flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
             >
                 <Mail class="w-20 h-20 stroke-[2.0] text-black" />
                 <p class="mt-5 text-[18px]">Email</p>
@@ -31,7 +31,7 @@ import LinkedIn from "../assets/icons/LinkedIn.svg";
 
             <a
                 href="https://github.com/tahoito" target="_blank" rel="noopener noreferrer"
-                class="flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
+                class="contact-card flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
             >
                 <img src={github.src} alt="GitHub" class="w-20 h-20" />
                 <p class="mt-5 text-[18px]">GitHub</p>
@@ -40,7 +40,7 @@ import LinkedIn from "../assets/icons/LinkedIn.svg";
             <a
                 href="https://www.instagram.com/_dagwi.34/" 
                 target="_blank" rel="noopener noreferrer"
-                class="flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
+                class="contact-card flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
             >
                 <img src={insta.src} alt="Instagram" class="w-20 h-20" />
                 <p class="mt-5 text-[18px]">Instagram</p>
@@ -50,7 +50,7 @@ import LinkedIn from "../assets/icons/LinkedIn.svg";
                 href="https://www.linkedin.com/in/taho-ito-37526641b/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
+                class="contact-card flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
             >
                 <img src={LinkedIn.src} alt="LinkedIn" class="w-20 h-20" />
                 <p class="mt-5 text-[18px]">LinkedIn</p>
@@ -61,26 +61,35 @@ import LinkedIn from "../assets/icons/LinkedIn.svg";
 </section>
 
 <style>
-.fade-item {
+.contact-card {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 1.2s ease;
+    transform: translateX(-30px) translateY(20px);
+    transition: all 0.8s ease;
 }
 
-.fade-item.show {
+.contact-card.show {
   opacity: 1;
-  transform: translateY(0);
+    transform: translateX(0) translateY(0);
 }
 </style>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-});
+const contactCards = document.querySelectorAll(".contact-card");
 
-document.querySelectorAll(".fade-item").forEach((el) => observer.observe(el));
+if (contactCards.length > 0) {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const index = Array.from(contactCards).indexOf(entry.target);
+            setTimeout(() => {
+                entry.target.classList.add("show");
+            }, index * 140);
+
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.2 });
+
+    contactCards.forEach((card) => observer.observe(card));
+}
 </script>

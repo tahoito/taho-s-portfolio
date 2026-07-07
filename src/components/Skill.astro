@@ -134,7 +134,7 @@ import mysql from "../assets/icons/mysql.svg";
 const skillSection = document.querySelector("#skill");
 
 if (skillSection) {
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
@@ -144,9 +144,9 @@ if (skillSection) {
         }, index * 150);
       });
 
-      observer.unobserve(entry.target);
+      obs.unobserve(entry.target);
     });
-  });
+  }, { threshold: 0.2 });
 
   observer.observe(skillSection);
 }

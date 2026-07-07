@@ -11,7 +11,7 @@ import me from "../assets/images/me.png";
         <img
             src={me.src}
             alt="Taho"
-            class="w-[300px] flex-shrink-0 object-cover"
+            class="fade-item w-[300px] flex-shrink-0 object-cover"
         />
 
         <div class="max-w-[500px] text-[18px] leading-[30px] text-text">
@@ -24,3 +24,28 @@ import me from "../assets/images/me.png";
         </div>
     </div>
 </section>
+
+<style>
+.fade-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s ease;
+}
+
+.fade-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".fade-item").forEach((el) => observer.observe(el));
+</script>

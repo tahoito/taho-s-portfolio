@@ -20,7 +20,7 @@ import LinkedIn from "../assets/icons/LinkedIn.svg";
             </p>
         </div>
 
-        <div class="mt-20 flex justify-center gap-10">
+        <div class="fade-item mt-20 flex justify-center gap-10">
             <a
                 href="mailto:tahoito.dev@gmail.com"
                 class="flex h-[210px] w-[210px] flex-col items-center justify-center rounded-[12px] border-2 border-cherry transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-cherry"
@@ -59,3 +59,28 @@ import LinkedIn from "../assets/icons/LinkedIn.svg";
 
     </div>
 </section>
+
+<style>
+.fade-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s ease;
+}
+
+.fade-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".fade-item").forEach((el) => observer.observe(el));
+</script>

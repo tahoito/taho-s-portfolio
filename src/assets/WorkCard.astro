@@ -24,7 +24,7 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 ---
 
 <div
-  class="group mx-auto w-fit cursor-pointer"
+  class="fade-item group mx-auto w-fit cursor-pointer"
   onclick={`document.getElementById('${id}')?.showModal()`}
 >
   <div class="h-[193px] w-[332px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
@@ -127,3 +127,29 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
     </div>
   </div>
 </dialog>
+
+
+<style>
+.fade-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.fade-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".fade-item").forEach((el) => observer.observe(el));
+</script>

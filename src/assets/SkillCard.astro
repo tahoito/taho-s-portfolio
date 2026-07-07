@@ -13,6 +13,7 @@ interface Props {
 }
 
 const { title, skills } = Astro.props;
+const isSingleColumn = title === "データベース";
 ---
 
 <div class="rounded-[16px] bg-cherry-bg p-8">
@@ -20,7 +21,7 @@ const { title, skills } = Astro.props;
         {title}
     </h3>
 
-    <div class="mt-8 grid grid-cols-2 gap-x-10 gap-y-8">
+    <div class:list={["mt-8 grid gap-x-10 gap-y-8", isSingleColumn ? "grid-cols-1" : "grid-cols-2"]}>
         {skills.map((skill) => (
         <div class="flex gap-4">
             <div class="flex h-12 w-12 items-center justify-center rounded-full bg-bg1">
@@ -49,4 +50,3 @@ const { title, skills } = Astro.props;
     ))}
     </div>
 </div>
-

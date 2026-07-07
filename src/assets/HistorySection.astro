@@ -3,14 +3,13 @@ import { histories } from "../data/history";
 import HistoryItem from "./HistoryItem.astro";
 ---
 
-<section class="relative">
-
-  <div class="absolute left-[180px] top-0 h-full w-[6px] rounded-full bg-primary"></div>
-
-  {
-    histories.map((history) => (
-      <HistoryItem {...history} />
-    ))
-  }
-
+<section class="py-24">
+    <div class="relative mx-auto max-w-7xl">
+        <div class="absolute left-[180px] top-0 h-full w-[6px] rounded-full bg-primary"></div>
+        {
+            histories.map((history) => (
+            <HistoryItem {...history} />
+            ))
+        }
+    </div>
 </section>

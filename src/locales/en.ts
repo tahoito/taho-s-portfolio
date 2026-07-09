@@ -21,6 +21,11 @@ export const en = {
     dream1: "My main focus is on Laravel and Java, and I’m passionate about building services that make everyday life more convenient and enjoyable for users. ",
     dream2: "In my personal projects, I handle everything from planning and UI design to development.",
     dream3: "My goal is to become a full-stack engineer who creates services used by people around the world.",
+  },
+
+  contact: {
+    message1: "Thank you for visiting my portfolio.",
+    message2: "If you have any questions or would like to get in touch, please feel free to contact me.",
   }
 };
 

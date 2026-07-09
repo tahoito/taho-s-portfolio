@@ -3,7 +3,22 @@ import { Mail } from "lucide-astro";
 import github from "../assets/icons/github.svg";
 import insta from "../assets/icons/insta.svg";
 import LinkedIn from "../assets/icons/LinkedIn.svg";
+
+
+interface Props {
+  t: {
+    contact: {
+    message1: string;
+    message2: string;
+  },
+  };
+
+  lang: "ja" | "en";
+}
+
+const { t, lang } = Astro.props;
 ---
+
 
 
 <section id="contact" class="flex min-h-screen items-center justify-center bg-bg2 py-24">
@@ -15,8 +30,8 @@ import LinkedIn from "../assets/icons/LinkedIn.svg";
             </h1>
 
             <p class="mt-4 text-[18px] leading-[30px]">
-                ご覧いただきありがとうございます。<br>
-                ご質問やご連絡がありましたら、お気軽にお問い合わせください。
+                {t.contact.message1}<br>
+                {t.contact.message2}
             </p>
         </div>
 

@@ -1,5 +1,20 @@
 ---
 import me from "../assets/images/me.png";
+interface Props {
+  t: {
+    profile: {
+      aboutMe: string;
+      workMe: string;
+      dream1: string;
+      dream2: string;
+      dream3: string;
+    }
+  };
+
+  lang: "ja" | "en";
+}
+
+const { t, lang } = Astro.props;
 ---
 
 <section id="profile" class="flex min-h-screen flex-col items-center justify-center bg-bg2">
@@ -15,12 +30,12 @@ import me from "../assets/images/me.png";
         />
 
         <div class="max-w-[500px] text-[18px] leading-[30px] text-text">
-            <p> 名古屋出身のプログラミングを学んでる18歳です。<br> 
-                現在はマレーシアのAPU大学でITを学びながら、Webアプリケーション開発に取り組んでいます。</p> 
+            <p>{t.profile.aboutMe}<br> 
+                {t.profile.workMe}</p> 
             <p class="mt-4"> 
-                LaravelやJavaを中心に、ユーザーの暮らしをより豊かにするサービスづくりを目指して学んでいます。
-                <br>チーム開発ではバックエンドを担当し、個人では企画からデザイン、実装まで一貫して行っています。
-                <br>将来は、世界中の人に使われるサービスを開発するフルスタックエンジニアになることが目標です。</p>
+                {t.profile.dream1}
+                <br>{t.profile.dream2}
+                <br>{t.profile.dream3}</p>
         </div>
     </div>
 </section>

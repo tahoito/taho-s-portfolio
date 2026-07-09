@@ -17,8 +17,8 @@ interface Props {
 
 const { t, lang } = Astro.props;
 
-const langLink = lang === "ja" ? "/eng" : "/";
-const langText = lang === "ja" ? "ENG" : "JP";
+const langLink = lang === "ja" ? "/en" : "/";
+const langText = lang === "ja" ? "EN" : "JP";
 ---
 
 <header class="fixed top-0 left-0 z-50 w-full bg-bg1/80 backdrop-blur-md">
@@ -68,10 +68,17 @@ const langText = lang === "ja" ? "ENG" : "JP";
                   </a>
               </li>
             </ul>
-          <div class="flex items-center gap-2 text-sm"> 
-            <a href={langLink}>JP</a> <span class="text-gray-400">|</span> <a href={langText}>EN</a> 
+          <div class="flex items-center gap-2 text-sm">
+            <a
+              href="/"
+              class={lang === "ja" ? "text-cherry" : "text-text"}>JP</a>
+            <span class="text-gray-400">|</span>
+            <a
+              href="/en"
+              class={lang === "en" ? "text-cherry" : "text-text"}>
+              EN</a>
           </div>
-        </div>
+      </div>
     </nav>
 </header>
 

@@ -1,11 +1,27 @@
+---
+interface Props {
+  t: {
+    about: {
+    welcome: string;
+    explanation1: string;
+    explanation2: string;
+  },
+  };
+
+  lang: "ja" | "en";
+}
+
+const { t, lang } = Astro.props;
+---
+
 <section class="flex h-screen flex-col items-center justify-center bg-bg1">
   <h1 class="font-title text-[56px] text-text-title font-medium">
     About This Site...
   </h1>
 
   <p class="mt-8 text-center text-[18px] text-text leading-[30px]">
-    Tahoのポートフォリオサイトへようこそ。<br />
-    これまでに制作した作品や、積み重ねてきた学びをまとめています。<br />
-    一つひとつに、私らしさと思いを込めました。ごゆっくりお楽しみください。
+    {t.about.welcome}<br />
+    {t.about.explanation1}<br />
+    {t.about.explanation2}
   </p>
 </section>

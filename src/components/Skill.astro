@@ -14,6 +14,26 @@ import react from "../assets/icons/react.svg";
 import springboot from "../assets/icons/springboot.svg";
 import postgresql from "../assets/icons/postgresql.svg";
 import mysql from "../assets/icons/mysql.svg";
+
+interface Props {
+  t: {
+    skills: {
+      description1: string;
+      description2: string;
+      description3: string;
+      description4: string;
+      programmingLanguages: string;
+      frontend: string;
+      backend: string;
+      databases: string;
+  },
+  };
+
+  lang: "ja" | "en";
+}
+
+const { t, lang } = Astro.props;
+
 ---
 
 <section id="skill" class="bg-bg2 py-24">
@@ -26,17 +46,16 @@ import mysql from "../assets/icons/mysql.svg";
         <div class="max-w-6xl">
 
             <p class="text-left text-[18px] text-text leading-[30px]">
-                これまでの学習や開発を通して身につけたスキルをまとめました。<br>
-                HTML/CSSからLaravel・Next.jsを用いたWebアプリケーション開発まで、
-                フロントエンド・バックエンドの両方に挑戦してきました。<br>
-                現在はWeb開発を中心に学習を続けており、今後はクラウド技術やバックエンド開発の知識をさらに深め、
-                より実践的なシステム開発ができるエンジニアを目指しています。
+                {t.skills.description1}<br>
+                {t.skills.description2}
+                {t.skills.description3}<br>
+                {t.skills.description4}
             </p>
 
             <div class="mt-20 grid grid-cols-2 gap-10">
                 <div class="skill-card">
                     <SkillCard 
-                        title="プログラミング言語"
+                        title={t.skills.programmingLanguages}
                         skills={[
                             { name: "Python", level: 5, icon: python },
                             { name: "PHP", level: 5, icon: php },
@@ -48,7 +67,7 @@ import mysql from "../assets/icons/mysql.svg";
 
                 <div class="skill-card">
                     <SkillCard
-                        title="フロントエンド"
+                        title={t.skills.frontend}
                         skills={[
                             { name: "HTML/CSS", level: 5, icon: css },
                             { name: "Tailwind CSS", level: 5, icon: tailwindcss },
@@ -61,7 +80,7 @@ import mysql from "../assets/icons/mysql.svg";
 
                 <div class="skill-card">
                     <SkillCard
-                        title="バックエンド"
+                        title={t.skills.backend}
                         skills={[
                             { name: "Laravel", level: 5, icon: laravel },
                             { name: "Django", level: 5, icon: django },
@@ -73,7 +92,7 @@ import mysql from "../assets/icons/mysql.svg";
 
                 <div class="skill-card">
                     <SkillCard
-                    title="データベース"
+                    title={t.skills.databases}
                     skills={[
                         { name: "MySQL", level: 5 , icon: mysql },
                         { name: "PostgreSQL", level: 3 , icon: postgresql },

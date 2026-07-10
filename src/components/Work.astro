@@ -20,7 +20,7 @@ const works = [
       `,
     period: "2024年11月ごろ ~ 2025年3月13日",
     techs: ["HTML/CSS", "Java", "SpringBoot", "Chart.js"],
-    github: "https://github.com/...",
+    github: "https://github.com/tahoito/smart_manage",
   },
   {
     name: "Tastie",
@@ -34,6 +34,7 @@ const works = [
       `,
     period: "2025年7月ごろ ~ 2025年9月ごろ",
     techs: ["HTML/CSS", "Laravel", "Tailwind CSS", "Inertia.js", "Vue.js"],
+    github: "https://github.com/tahoito/recipe_app",
   },
   {
     name: "Portfolio",
@@ -54,6 +55,7 @@ const works = [
       また、作品の詳細をモーダルで表示することで、画面遷移を減らしながらスムーズに閲覧できるよう工夫しました。`,
     period: "2026年6月ごろ ~ 2026年7月ごろ",
     techs: ["Astro", "Tailwind CSS", "TypeScript"],
+    github:"https://github.com/tahoito/weather-app",
   },
   {
     name: "Cafest",
@@ -64,6 +66,7 @@ const works = [
       また、作品の詳細をモーダルで表示することで、画面遷移を減らしながらスムーズに閲覧できるよう工夫しました。`,
     period: "2026年6月ごろ ~ 2026年7月ごろ",
     techs: ["Astro", "Tailwind CSS", "TypeScript"],
+    github:"https://github.com/tahoito/cafest_app",
   },
   {
     name: "Cofit",
@@ -74,9 +77,24 @@ const works = [
       また、作品の詳細をモーダルで表示することで、画面遷移を減らしながらスムーズに閲覧できるよう工夫しました。`,
     period: "2026年6月ごろ ~ 2026年7月ごろ",
     techs: ["Astro", "Tailwind CSS", "TypeScript"],
+    github:"https://github.com/kdg25-project/cofit",
   },
 ];
+
+interface Props {
+  t: {
+    works: {
+      title: string;
+  },
+  };
+
+  lang: "ja" | "en";
+}
+
+const { t, lang } = Astro.props;
 ---
+
+
 <section id="works" class="bg-bg1 py-24">
   <div class="mx-auto flex max-w-6xl flex-col items-center gap-4">
 
@@ -85,7 +103,7 @@ const works = [
     </h1>
 
     <p class="text-center text-[18px] leading-[30px] text-text">
-      個人制作・チーム制作
+      {t.works.title}
     </p>
 
     <div class="mt-16 grid w-full grid-cols-3 gap-8">

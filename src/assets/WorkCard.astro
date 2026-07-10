@@ -1,10 +1,10 @@
 ---
 import type { ImageMetadata } from "astro";
-import { X } from "lucide-astro";
+import { X, ChevronLeft, ChevronRight } from "lucide-astro";
 
 interface Props {
   name: string;
-  image: ImageMetadata;
+  image: ImageMetadata | ImageMetadata[];
   description?: string;
   period: string;
   techs: string[];
@@ -20,6 +20,7 @@ const {
   githubUrl,
 } = Astro.props;
 
+const images = Array.isArray(image) ? image : [image];
 const id = name.replace(/\s+/g, "-").toLowerCase();
 ---
 
@@ -29,7 +30,7 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 >
   <div class="h-[193px] w-[332px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
     <img
-      src={image.src}
+      src={images[0].src}
       alt={name}
       class="h-full w-full object-cover transition duration-300 group-hover:scale-110"
     />
@@ -42,7 +43,7 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 
 <dialog
   id={id}
-  class="m-0 h-screen w-screen max-w-none bg-transparent p-0 backdrop:bg-black/70"
+  class="work-card-modal m-0 h-screen w-screen max-w-none bg-transparent p-0 backdrop:bg-black/70"
 >
   <div class="flex min-h-screen items-center justify-center px-8 py-10">
 
@@ -62,11 +63,50 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 
         <div class="w-[440px] shrink-0">
 
-          <img
-            src={image.src}
-            alt={name}
-            class="w-full border border-gray-200"
-          />
+          <div class="relative w-full overflow-hidden">
+            <img
+              src={images[0].src}
+              alt={name}
+              id={`${id}-image`}
+              class="w-full border border-gray-200 transition-all duration-300"
+            />
+          </div>
+
+          <div class="mt-4 flex items-center justify-between gap-4">
+            <button
+              type="button"
+              class="flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black"
+              data-action="prev"
+              aria-label="Previous image"
+            >
+              <ChevronLeft class="h-5 w-5" />
+            </button>
+
+            <div class="flex justify-center gap-2">
+              {images.map((img, index: number) => (
+                <button
+                  class:list={[
+                    "dot h-3 w-3 rounded-full",
+                    index === 0 ? "bg-cherry" : "bg-gray-300",
+                  ]}
+                  data-index={index}
+                  data-src={img.src}
+                  data-id={id}
+                  type="button"
+                  aria-label={`Show image ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              class="flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black"
+              data-action="next"
+              aria-label="Next image"
+            >
+              <ChevronRight class="h-5 w-5" />
+            </button>
+          </div>
 
           <div class="mt-10">
             <h3 class="text-[18px] font-medium text-text">
@@ -151,4 +191,39 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll(".fade-item").forEach((el) => observer.observe(el));
+
+document.querySelectorAll(".work-card-modal").forEach((dialog) => {
+  const image = dialog.querySelector<HTMLImageElement>("img[id$='-image']");
+  const buttons = Array.from(dialog.querySelectorAll<HTMLButtonElement>(".dot"));
+  const prevButton = dialog.querySelector<HTMLButtonElement>("button[data-action='prev']");
+  const nextButton = dialog.querySelector<HTMLButtonElement>("button[data-action='next']");
+  let currentIndex = 0;
+
+  if (!image) return;
+
+  const updateImage = (index: number) => {
+    if (buttons.length === 0) return;
+    const normalized = ((index % buttons.length) + buttons.length) % buttons.length;
+    const button = buttons[normalized];
+    const src = button.dataset.src;
+    if (!src) return;
+
+    currentIndex = normalized;
+    image.src = src;
+    buttons.forEach((btn, idx) => {
+      btn.classList.toggle("bg-cherry", idx === currentIndex);
+      btn.classList.toggle("bg-gray-300", idx !== currentIndex);
+    });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.index ?? 0);
+      updateImage(index);
+    });
+  });
+
+  prevButton?.addEventListener("click", () => updateImage(currentIndex - 1));
+  nextButton?.addEventListener("click", () => updateImage(currentIndex + 1));
+});
 </script>

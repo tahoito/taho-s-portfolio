@@ -46,9 +46,9 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 >
   <div class="flex min-h-screen items-center justify-center px-8 py-10">
 
-    <div class="relative w-full max-w-7xl bg-bg1 px-16 py-12">
+    <div class="relative w-full max-w-6xl bg-bg1 px-16 py-12">
       <button
-        class="absolute right-8 top-8 flex h-14 w-14 items-center justify-center rounded-full bg-cherry text-white transition duration-300 hover:scale-110"
+        class="absolute right-8 top-8 flex h-14 w-14 items-center justify-center rounded-full bg-cherry text-white transition duration-300 focus:outline-none focus:ring-0 hover:scale-110"
         onclick={`document.getElementById('${id}')?.close()`}
       >
         <X class="h-9 w-9 stroke-[2]" />
@@ -75,7 +75,7 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 
             <div class="mt-5 flex flex-wrap gap-3">
               {techs.map((tech) => (
-                <span class="rounded-md bg-cherry px-4 py-2 text-white">
+                <span class="rounded-md bg-cherry px-3 py-1 text-white">
                   {tech}
                 </span>
               ))}
@@ -84,43 +84,42 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 
         </div>
 
-        <div class="flex-1">
-
+        <div class="flex-1 flex flex-col gap-6">
           <section>
             <h3 class="text-[18px] font-medium text-text">
               アプリ概要
             </h3>
 
-            <p class="mt-2 whitespace-pre-line text-[16px] leading-[25px] text-text">
+            <p class="whitespace-pre-line text-[16px] leading-[23px] text-text">
               {description}
             </p>
           </section>
 
-          <section class="mt-14">
+          <section class="mt-4">
             <h3 class="text-[18px] font-medium text-text">
               開発期間
             </h3>
 
-            <p class="mt-4 text-[16px] text-text">
+            <p class="mt-2 text-[16px] text-text">
               {period}
             </p>
-          </section>
-
-          {githubUrl && (
-            <section class="mt-14">
-              <h3 class="text-[18px] font-medium text-text">
-                GitHub
-              </h3>
-
-              <a
-                href={githubUrl}
-                target="_blank"
-                class="mt-4 inline-block text-[16px] text-cherry transition hover:underline"
-              >
-                {githubUrl}
-              </a>
             </section>
-          )}
+
+            {githubUrl && (
+              <section>
+                <h3 class="text-[18px] font-medium text-text">
+                  GitHub
+                </h3>
+
+                <a
+                  href={githubUrl}
+                  target="_blank"
+                  class="mt-2 inline-block text-[16px] text-cherry hover:underline"
+                >
+                  {githubUrl}
+                </a>
+              </section>
+            )}
 
         </div>
       </div>

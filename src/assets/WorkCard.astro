@@ -25,14 +25,14 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 ---
 
 <div
-  class="fade-item group mx-auto w-fit cursor-pointer"
+  class="fade-item group mx-auto w-fit cursor-pointer transition duration-300 hover:scale-[1.10]"
   onclick={`document.getElementById('${id}')?.showModal()`}
 >
-  <div class="h-[193px] w-[332px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
+  <div class="h-[193px] w-[332px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:shadow-xl">
     <img
       src={images[0].src}
       alt={name}
-      class="h-full w-full object-cover transition duration-300 group-hover:scale-110"
+      class="h-full w-full object-cover transition duration-300"
     />
   </div>
 

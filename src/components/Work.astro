@@ -13,6 +13,11 @@ import Tastie5 from "../assets/works/tastie/5.jpg";
 import Tastie6 from "../assets/works/tastie/6.jpg";
 import Portfolio from "../assets/works/portfolio/1.png";
 import Amasupo from "../assets/works/amasupo/1.png";
+import Amasupo2 from "../assets/works/amasupo/2.png";
+import Amasupo3 from "../assets/works/amasupo/3.png";
+import Amasupo4 from "../assets/works/amasupo/4.png";
+import Amasupo5 from "../assets/works/amasupo/5.png";
+import Amasupo6 from "../assets/works/amasupo/6.png";
 import Cafest from "../assets/works/cafest/1.png";
 import Cofit from "../assets/works/cofit/1.png";
 
@@ -55,14 +60,13 @@ const works = [
   },
   {
     name: "あますぽ",
-    image: Amasupo,
+    image: [Amasupo, Amasupo2, Amasupo3, Amasupo4, Amasupo5, Amasupo6],
     description: `
-      このポートフォリオサイトは、これまでの制作物やスキルを分かりやすく伝えることを目的に制作しました。
-      自分の好きなカラーやイラストを取り入れ、親しみやすさと見やすさを両立したデザインを意識しています。また、作品の詳細をモーダルで表示することで、画面遷移を減らしながらスムーズに閲覧できるよう工夫しました。
-      
-      初めてJava・Spring Bootを使用した個人開発に取り組みました。CRUD機能の実装だけでなく、検索機能や目標設定機能、グラフによるデータの可視化を取り入れ、使いやすさと継続的に利用したくなるアプリを意識して設計・開発しました。`,
-    period: "2026年6月ごろ ~ 2026年7月ごろ",
-    techs: ["Astro", "Tailwind CSS", "TypeScript"],
+      天気を条件に組み込み、その日のコンディションに合った行動・スポットを提案するWebアプリです。名古屋市のエリアごとの天気に応じて、屋外・屋内のスポットをおすすめします。GoogleMapと連携し、地図上からもすぽとを探せるほか、目的や日時を指定して条件に合う場所を検索できます。チーム制作で、企画・リーダー・バックエンドを担当しました。
+
+      自分自身が「天気によって行き先に迷う」という経験から企画しました。ユーザー目線を意識して機能を考え、検索条件やおすすめ表示など細かい使いやすさにもこだわりました。また、チーム開発を通して設計や役割分担、デプロイまで経験できたことは大きな学びになりました。`,
+    period: "2025年11月ごろ ~ 2026年2月ごろ (4人での制作)",
+    techs: ["Next.js", "TypeScript", "TailwindCSS", "Laravel", "PostgreSQL"],
     githubUrl:"https://github.com/tahoito/weather-app",
   },
   {

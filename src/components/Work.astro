@@ -28,90 +28,85 @@ import Cofit3 from "../assets/works/cofit/3.png";
 import Cofit4 from "../assets/works/cofit/4.png";
 import Cofit5 from "../assets/works/cofit/5.png";
 
-const works = [
-  {
-    name: "Smart Manage",
-    image:  [ SmartManage, SmartManage2, SmartManage3, SmartManage4 ],
-    description: `
-      JavaとSpring Bootを用いて開発した家計管理アプリです。
-      収入と支出をカテゴリーごとに管理でき、円グラフによる可視化でお金の流れをひと目で把握できます。また、条件を指定して過去の記録を検索できるほか、貯金目標を設定し、達成状況を確認することもできます。日々の家計を分かりやすく管理し、継続的な支出の見直しをサポートするアプリです。
-
-      初めてJava・Spring Bootを使用した個人開発に取り組みました。CRUD機能の実装だけでなく、検索機能や目標設定機能、グラフによるデータの可視化を取り入れ、使いやすさと継続的に利用したくなるアプリを意識して設計・開発しました。
-      `,
-    period: "2024年11月ごろ ~ 2025年3月13日",
-    techs: ["HTML/CSS", "Java", "SpringBoot", "Chart.js"],
-    githubUrl: "https://github.com/tahoito/smart_manage",
-  },
-  {
-    name: "Tastie",
-    image: [Tastie, Tastie2, Tastie3, Tastie4, Tastie5, Tastie6],
-    description:  `
-      自分だけのレシピを記録・管理できるWebアプリです。
-      レシピを追加し、保存するだけでなく、必要な材料を買い物リストへ追加できるため、「レシピを残す → 買い物リストで活用する」までを一つのアプリで完結できます。PWAに対応しており、スマートフォンからも快適に利用できます。
-
-      学校の審査会に向けて個人制作したWebアプリです。親が作った料理を自分でも再現できるよう、レシピを記録することを目的として開発しましたが、実際に使うことを考えると、必要な材料をそのまま買い物リストに追加できた方が便利だと感じ、チェックリスト機能を実装しました。ユーザー目線で買い物まで一貫してサポートできるアプリを目指しました。
-    `,
-    period: "2025年7月ごろ ~ 2025年9月ごろ",
-    techs: ["HTML/CSS", "Laravel", "Tailwind CSS", "Inertia.js", "Vue.js"],
-    githubUrl: "https://github.com/tahoito/recipe_app",
-  },
-  {
-    name: "Portfolio",
-    image: Portfolio,
-    description: `
-      このポートフォリオサイトは、これまでの制作物やスキルを分かりやすく伝えることを目的に制作しました。
-      自分の好きなカラーやイラストを取り入れ、親しみやすさと見やすさを両立したデザインを意識しています。
-      また、作品の詳細をモーダルで表示することで、画面遷移を減らしながらスムーズに閲覧できるよう工夫しました。`,
-    period: "2026年6月ごろ ~ 2026年7月ごろ",
-    techs: ["Astro", "Tailwind CSS", "TypeScript"],
-  },
-  {
-    name: "あますぽ",
-    image: [Amasupo, Amasupo2, Amasupo3, Amasupo4, Amasupo5, Amasupo6],
-    description: `
-      天気を条件に組み込み、その日のコンディションに合った行動・スポットを提案するWebアプリです。名古屋市のエリアごとの天気に応じて、屋外・屋内のスポットをおすすめします。GoogleMapと連携し、地図上からもすぽとを探せるほか、目的や日時を指定して条件に合う場所を検索できます。チーム制作で、企画・リーダー・バックエンドを担当しました。
-
-      自分自身が「天気によって行き先に迷う」という経験から企画しました。ユーザー目線を意識して機能を考え、検索条件やおすすめ表示など細かい使いやすさにもこだわりました。また、チーム開発を通して設計や役割分担、デプロイまで経験できたことは大きな学びになりました。`,
-    period: "2025年11月ごろ ~ 2026年2月ごろ (4人での制作)",
-    techs: ["Next.js", "TypeScript", "TailwindCSS", "Laravel", "PostgreSQL"],
-    githubUrl:"https://github.com/tahoito/weather-app",
-  },
-  {
-    name: "Cafest",
-    image: [Cafest,Cafest2,Cafest3,Cafest4],
-    description: `
-      名古屋のカフェを対象とした検索アプリです。エリア・タグ・レビューなどの条件から、自分に合ったカフェを探すことができます。営業時間やレビュー、メニューなどの店舗ごとの詳細情報も確認できます。ユーザー画面だけでなく、店舗側の管理画面も開発し、店舗情報やメニュー、画像などを管理できる機能を実装しました。
-
-      友人との2人チームで開発し、私はバックエンドを中心に担当しました。SNSで検索する際の「情報が散らばっていて探しづらい」という課題を解決できるような設計をし、若者にも使いやすいシンプルなUIを意識しました。`,
-    period: "2025年12月ごろ ~ 2026年2月ごろ (2人での制作)",
-    techs: ["Laravel", "JavaScript", "TailwindCSS", "PostgreSQL"],
-    githubUrl:"https://github.com/tahoito/cafest_app",
-  },
-  {
-    name: "Cofit",
-    image: [Cofit, Cofit2, Cofit3, Cofit4, Cofit5],
-    description: `
-      「ひとりじゃ続かない運動を、みんなと。」をコンセプトに制作した、協力型フィットネスアプリです。ランキングや競争ではなく、仲間と協力しながら目標を達成することで、運動を楽しく継続できることを目指しました。運動はスクワット・腕立て伏せ・腹筋などに対応しており、スマートフォンで回数を計測できます。また、掲示板や3Dリワード機能を通して仲間同士で励まし合い、モチベーションを維持しながら継続できる仕組みを取り入れています。
-
-      チーム開発では、主にデザインとフロントエンドを担当しました。数値を扱うアプリだからこそ、ユーザーが自分の達成状況や目標までの進捗をひと目で把握できるよう、情報の見せ方やUIデザインを意識して設計しました。`,
-    period: "2025年1月26日 ~ 2026年2月6日 (5人での制作)",
-    techs: ["Next.js", "TypeScript", "Hono.js", "Cloudflare D1"],
-    githubUrl:"https://github.com/kdg25-project/cofit",
-  },
-];
-
 interface Props {
   t: {
     works: {
       title: string;
-  },
+      content: string;
+      stuck: string;
+      period: string;
+      sm_content: string;
+      sm_period: string;
+      ts_content: string;
+      ts_period: string;
+      pf_content: string;
+      pf_period: string;
+      am_content: string;
+      am_period: string;
+      cafest_content: string;
+      cafest_period: string;
+      cofit_content: string;
+      cofit_period: string;
+    };
   };
 
   lang: "ja" | "en";
 }
 
 const { t, lang } = Astro.props;
----
+
+
+const works = [
+  {
+    name: "Smart Manage",
+    image:  [ SmartManage, SmartManage2, SmartManage3, SmartManage4 ],
+    description: t.works.sm_content,
+    period: t.works.sm_period,
+    techs: ["HTML/CSS", "Java", "SpringBoot", "Chart.js"],
+    githubUrl: "https://github.com/tahoito/smart_manage",
+  },
+  {
+    name: "Tastie",
+    image: [Tastie, Tastie2, Tastie3, Tastie4, Tastie5, Tastie6],
+    description: t.works.ts_content ,
+    period: t.works.ts_period,
+    techs: ["HTML/CSS", "Laravel", "Tailwind CSS", "Inertia.js", "Vue.js"],
+    githubUrl: "https://github.com/tahoito/recipe_app",
+  },
+  {
+    name: "Portfolio",
+    image: Portfolio,
+    description:t.works.pf_content,
+    period: t.works.pf_period,
+    techs: ["Astro", "Tailwind CSS", "TypeScript"],
+  },
+  {
+    name: "あますぽ",
+    image: [Amasupo, Amasupo2, Amasupo3, Amasupo4, Amasupo5, Amasupo6],
+    description: t.works.am_content,
+    period: t.works.cofit_period,
+    techs: ["Next.js", "TypeScript", "TailwindCSS", "Laravel", "PostgreSQL"],
+    githubUrl:"https://github.com/tahoito/weather-app",
+  },
+  {
+    name: "Cafest",
+    image: [Cafest,Cafest2,Cafest3,Cafest4],
+    description: t.works.cafest_content,
+    period: t.works.cafest_period,
+    techs: ["Laravel", "JavaScript", "TailwindCSS", "PostgreSQL"],
+    githubUrl:"https://github.com/tahoito/cafest_app",
+  },
+  {
+    name: "Cofit",
+    image: [Cofit, Cofit2, Cofit3, Cofit4, Cofit5],
+    description: t.works.cofit_content,
+    period: t.works.cofit_period,
+    techs: ["Next.js", "TypeScript", "Hono.js", "Cloudflare D1"],
+    githubUrl:"https://github.com/kdg25-project/cofit",
+  },
+];
+
+----
 
 
 <section id="works" class="bg-bg1 py-24">
@@ -127,7 +122,7 @@ const { t, lang } = Astro.props;
 
     <div class="mt-16 grid w-full grid-cols-3 gap-8">
       {works.map((work) => (
-        <WorkCard {...work} />
+        <WorkCard {...work} t={t} lang={lang} />
       ))}
     </div>
 

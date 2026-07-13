@@ -3,6 +3,23 @@ import type { ImageMetadata } from "astro";
 import { X } from "lucide-astro";
 
 interface Props {
+  t: {
+    works: {
+      title: string,
+      content: string,
+      stuck: string,
+      period: string,
+  },
+  };
+
+  lang: "ja" | "en";
+}
+
+const { t, lang } = Astro.props;
+
+
+
+interface Props {
   name: string;
   image: ImageMetadata | ImageMetadata[];
   description?: string;
@@ -41,16 +58,17 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
   </p>
 </div>
 
+
 <dialog
   id={id}
   class="work-card-modal m-0 h-screen w-screen max-w-none bg-transparent p-0 backdrop:bg-black/70"
 >
   <div class="flex min-h-screen items-center justify-center px-8 py-10">
 
-    <div class="relative w-full max-w-6xl bg-bg1 px-16 py-12">
+    <div class="modal-content relative w-full max-w-6xl bg-bg1 px-16 py-12">
       <button
         class="absolute right-8 top-8 flex h-14 w-14 items-center justify-center rounded-full bg-cherry text-white transition duration-300 focus:outline-none focus:ring-0 hover:scale-110"
-        onclick={`document.getElementById('${id}')?.close()`}
+        data-close-dialog
       >
         <X class="h-9 w-9 stroke-[2]" />
       </button>
@@ -91,7 +109,7 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 
           <div class="mt-10">
             <h3 class="text-[18px] font-medium text-text">
-              使用技術
+              {t.works.stuck}
             </h3>
 
             <div class="mt-5 flex flex-wrap gap-3">
@@ -108,7 +126,7 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
         <div class="flex-1 flex flex-col gap-6">
           <section>
             <h3 class="text-[18px] font-medium text-text">
-              アプリ概要
+              {t.works.content}
             </h3>
 
             <p class="whitespace-pre-line text-[16px] leading-[23px] text-text">
@@ -118,7 +136,7 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 
           <section class="mt-4">
             <h3 class="text-[18px] font-medium text-text">
-              開発期間
+              {t.works.period}
             </h3>
 
             <p class="mt-2 text-[16px] text-text">
@@ -160,6 +178,68 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
   opacity: 1;
   transform: translateY(0);
 }
+
+/* モーダルの中身 */
+.work-card-modal[open] .modal-content {
+  animation: modal-pop 0.3s ease-out forwards;
+}
+
+.work-card-modal.closing .modal-content {
+  animation: modal-pop-out 0.2s ease-in forwards;
+}
+
+/* 背景 */
+.work-card-modal[open]::backdrop {
+  animation: backdrop-fade 0.25s ease-out;
+}
+
+.work-card-modal.closing::backdrop {
+  animation: backdrop-fade-out 0.2s ease-in forwards;
+}
+
+@keyframes modal-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modal-pop-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes backdrop-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdrop-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
 </style>
 
 <script>
@@ -173,7 +253,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".fade-item").forEach((el) => observer.observe(el));
 
-document.querySelectorAll(".work-card-modal").forEach((dialog) => {
+document.querySelectorAll<HTMLDialogElement>(".work-card-modal").forEach((dialog) => {
   const image = dialog.querySelector<HTMLImageElement>("img[id$='-image']");
   const buttons = Array.from(dialog.querySelectorAll<HTMLButtonElement>(".dot"));
   let currentIndex = 0;
@@ -200,6 +280,23 @@ document.querySelectorAll(".work-card-modal").forEach((dialog) => {
       const index = Number(button.dataset.index ?? 0);
       updateImage(index);
     });
+  });
+
+  const closeButton = dialog.querySelector<HTMLButtonElement>("[data-close-dialog]");
+
+  closeButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialog.classList.add("closing");
+
+    const handleAnimationEnd = (event: Event) => {
+      const animationEvent = event as AnimationEvent;
+      if (animationEvent.animationName !== "modal-pop-out") return;
+      dialog.removeEventListener("animationend", handleAnimationEnd);
+      dialog.close();
+      dialog.classList.remove("closing");
+    };
+
+    dialog.addEventListener("animationend", handleAnimationEnd as EventListener);
   });
 });
 </script>

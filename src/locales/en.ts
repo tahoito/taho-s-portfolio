@@ -33,27 +33,28 @@ export const en = {
 
         In this team project, I was responsible for the project planning, team leadership, and backend development.I created this idea from my own experience of struggling to choose where to go depending on the weather. I focused on usability and gained valuable experience in team development, system design, and deployment.`,
         sm_period:"November 2024 - 13th March 2025", 
-        ts_content: `自分だけのレシピを記録・管理できるWebアプリです。レシピを追加し、保存するだけでなく、必要な材料を買い物リストへ追加できるため、「レシピを残す → 買い物リストで活用する」までを一つのアプリで完結できます。PWAに対応しており、スマートフォンからも快適に利用できます。
+        ts_content: `This is a web application for storing and managing personal recipes. In addition to creating and saving recipes, users can add the required ingredients directly to a shopping list, making it easy to manage everything from recipe storage to grocery shopping in one place. It also supports PWA, allowing users to access it comfortably on smartphones.
 
-        学校の審査会に向けて個人制作したWebアプリです。親が作った料理を自分でも再現できるよう、レシピを記録することを目的として開発しましたが、実際に使うことを考えると、必要な材料をそのまま買い物リストに追加できた方が便利だと感じ、チェックリスト機能を実装しました。ユーザー目線で買い物まで一貫してサポートできるアプリを目指しました。`,
-        ts_period:"July/2025~ September/2025",
+        This was an individual project developed for a school review. I created it so I could recreate dishes my parents had cooked by keeping my own recipe records. To make the app more practical, I added a shopping list feature that lets users transfer recipe ingredients directly to a checklist, providing a smooth experience from recipe management to grocery shopping.
+        `,
+        ts_period:"July 2025 - September 2025",
         pf_content:"ポートフォリオの説明",
         pf_period:"June 2026 - July 2027",
-        am_content:`
-        天気を条件に組み込み、その日のコンディションに合った行動・スポットを提案するWebアプリです。名古屋市のエリアごとの天気に応じて、屋外・屋内のスポットをおすすめします。GoogleMapと連携し、地図上からもすぽとを探せるほか、目的や日時を指定して条件に合う場所を検索できます。チーム制作で、企画・リーダー・バックエンドを担当しました。
+        am_content:`This is a web application that recommends indoor and outdoor spots based on the weather in each area of Nagoya City. It is integrated with Google Maps, allowing users to explore locations on a map and search for places by purpose, date, and time. This was a team project, and I was responsible for project planning, team leadership, and backend development.
 
-        自分自身が「天気によって行き先に迷う」という経験から企画しました。ユーザー目線を意識して機能を考え、検索条件やおすすめ表示など細かい使いやすさにもこだわりました。また、チーム開発を通して設計や役割分担、デプロイまで経験できたことは大きな学びになりました。`,
+        I came up with the idea from my own experience of struggling to decide where to go depending on the weather. I focused on creating a user-friendly experience by designing practical search features and personalized recommendations. Through this project, I also gained valuable experience in system design, teamwork, and deployment.
+        `,
         am_period:"November 2025 - February 2026",
-        cafest_content: `
-        名古屋のカフェを対象とした検索アプリです。エリア・タグ・レビューなどの条件から、自分に合ったカフェを探すことができます。営業時間やレビュー、メニューなどの店舗ごとの詳細情報も確認できます。ユーザー画面だけでなく、店舗側の管理画面も開発し、店舗情報やメニュー、画像などを管理できる機能を実装しました。
+        cafest_content: `This is a cafe search web application for finding cafes in Nagoya. Users can search by area, tags, and reviews, and view detailed information such as business hours, menus, and customer reviews. In addition to the user interface, I also developed an admin dashboard that allows store owners to manage their cafe information, menus, and images.
 
-        友人との2人チームで開発し、私はバックエンドを中心に担当しました。SNSで検索する際の「情報が散らばっていて探しづらい」という課題を解決できるような設計をし、若者にも使いやすいシンプルなUIを意識しました。`,
-        cafest_period: "December 2025 ~ February 2026)",
-        cofit_content: `
-        「ひとりじゃ続かない運動を、みんなと。」をコンセプトに制作した、協力型フィットネスアプリです。ランキングや競争ではなく、仲間と協力しながら目標を達成することで、運動を楽しく継続できることを目指しました。運動はスクワット・腕立て伏せ・腹筋などに対応しており、スマートフォンで回数を計測できます。また、掲示板や3Dリワード機能を通して仲間同士で励まし合い、モチベーションを維持しながら継続できる仕組みを取り入れています。
+        This was a two-person team project, and I mainly handled backend development. We designed the application to solve the problem of information being scattered across social media, making it easier for users to find cafes. We also focused on creating a simple and intuitive UI for young users.
+        `,
+        cafest_period: "December 2025 - February 2026",
+        cofit_content: `This is a collaborative fitness application built around the concept of "Exercise is easier together." Instead of focusing on competition or rankings, it encourages users to achieve goals by working together with friends. The app supports exercises such as squats, push-ups, and sit-ups, automatically counts repetitions on a smartphone, and includes a community board and 3D rewards to help users stay motivated.
 
-        チーム開発では、主にデザインとフロントエンドを担当しました。数値を扱うアプリだからこそ、ユーザーが自分の達成状況や目標までの進捗をひと目で把握できるよう、情報の見せ方やUIデザインを意識して設計しました。`,
-        cofit_period: "26th January 2026 ~ 6th February 2026"
+        This was a team project, and I was mainly responsible for the UI design and frontend development. Since the app displays fitness data, I focused on creating a clear and intuitive interface so users could easily track their progress and goals at a glance.
+        `,
+        cofit_period: "26th January 2026 - 6th February 2026"
     },
 
     skills: {

@@ -23,6 +23,10 @@ import Cafest2 from "../assets/works/cafest/2.png";
 import Cafest3 from "../assets/works/cafest/3.png";
 import Cafest4 from "../assets/works/cafest/4.png";
 import Cofit from "../assets/works/cofit/1.png";
+import Cofit2 from "../assets/works/cofit/2.png";
+import Cofit3 from "../assets/works/cofit/3.png";
+import Cofit4 from "../assets/works/cofit/4.png";
+import Cofit5 from "../assets/works/cofit/5.png";
 
 const works = [
   {
@@ -85,14 +89,13 @@ const works = [
   },
   {
     name: "Cofit",
-    image: Cofit,
+    image: [Cofit, Cofit2, Cofit3, Cofit4, Cofit5],
     description: `
-      このポートフォリオサイトは、これまでの制作物やスキルを分かりやすく伝えることを目的に制作しました。
-      自分の好きなカラーやイラストを取り入れ、親しみやすさと見やすさを両立したデザインを意識しています。また、作品の詳細をモーダルで表示することで、画面遷移を減らしながらスムーズに閲覧できるよう工夫しました。
-      
-      初めてJava・Spring Bootを使用した個人開発に取り組みました。CRUD機能の実装だけでなく、検索機能や目標設定機能、グラフによるデータの可視化を取り入れ、使いやすさと継続的に利用したくなるアプリを意識して設計・開発しました。`,
-    period: "2026年6月ごろ ~ 2026年7月ごろ",
-    techs: ["Astro", "Tailwind CSS", "TypeScript"],
+      「ひとりじゃ続かない運動を、みんなと。」をコンセプトに制作した、協力型フィットネスアプリです。ランキングや競争ではなく、仲間と協力しながら目標を達成することで、運動を楽しく継続できることを目指しました。運動はスクワット・腕立て伏せ・腹筋などに対応しており、スマートフォンで回数を計測できます。また、掲示板や3Dリワード機能を通して仲間同士で励まし合い、モチベーションを維持しながら継続できる仕組みを取り入れています。
+
+      チーム開発では、主にデザインとフロントエンドを担当しました。数値を扱うアプリだからこそ、ユーザーが自分の達成状況や目標までの進捗をひと目で把握できるよう、情報の見せ方やUIデザインを意識して設計しました。`,
+    period: "2025年1月26日 ~ 2026年2月6日 (5人での制作)",
+    techs: ["Next.js", "TypeScript", "Hono.js", "Cloudflare D1"],
     githubUrl:"https://github.com/kdg25-project/cofit",
   },
 ];

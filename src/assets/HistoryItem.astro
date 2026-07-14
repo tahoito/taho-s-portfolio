@@ -26,15 +26,11 @@ const { year, image, description, title } = Astro.props;
     <div
       class="absolute top-1/2 left-6 h-[15px] w-[78px] -translate-y-1/2 bg-cherry"
     ></div>
-
-    <div
-      class="absolute top-1/2 right-0 z-10 size-[257px] translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"
-    ></div>
   </div>
 
   <!-- 写真 -->
   <div
-    class="relative z-10 size-[257px] overflow-hidden rounded-full bg-[#d9d9d9] md:size-[140px]"
+    class="relative z-10 ml-4 h-[257px] w-[257px] shrink-0 overflow-hidden rounded-full bg-[#d9d9d9]"
   >
     <img
       src={typeof image === 'string' ? image : image.src}
@@ -45,7 +41,7 @@ const { year, image, description, title } = Astro.props;
   </div>
 
   <!-- 説明 -->
-  <div class="space-y-2 text-[24px]">
+  <div class="space-y-2 text-[24px] text-left">
     {
       description.map((text) => (
         <p>{text}</p>

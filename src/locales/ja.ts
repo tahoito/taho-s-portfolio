@@ -67,6 +67,10 @@ export const ja = {
         databases: "データベース",
     },
 
+    history: {
+        title: "せっかくなので、Tahoの今までの人生を一緒にのぞいてみましょう。",
+    },
+
     contact: {
         message1: "ご覧いただきありがとうございます。",
         message2: "ご質問やご連絡がありましたら、お気軽にお問い合わせください。",

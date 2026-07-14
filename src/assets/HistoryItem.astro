@@ -12,7 +12,7 @@ const { year, image, description, title } = Astro.props;
 ---
 
 <div
-  class="fade-item grid min-h-[160px] grid-cols-1 items-center gap-6 md:grid-cols-[180px_60px_150px_1fr] md:gap-x-0"
+  class="fade-item grid min-h-[260px] items-center md:grid-cols-[180px_80px_257px_1fr]"
 >
   <!-- 年 -->
   <p
@@ -41,7 +41,7 @@ const { year, image, description, title } = Astro.props;
   </div>
 
   <!-- 説明 -->
-  <div class="space-y-2 text-[24px] text-left">
+  <div class="pl-10 space-y-2 text-[24px] text-left">
     {
       description.map((text) => (
         <p>{text}</p>

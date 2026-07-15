@@ -68,6 +68,10 @@ export const en = {
         databases: "Database",
     },
 
+    history: {
+        title: "Let's take a look back at Taho's journey so far.",
+    },
+
     contact: {
         message1: "Thank you for visiting my portfolio.",
         message2: "If you have any questions or would like to get in touch, please feel free to contact me.",

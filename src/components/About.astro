@@ -14,12 +14,12 @@ interface Props {
 const { t, lang } = Astro.props;
 ---
 
-<section class="flex h-screen flex-col items-center justify-center bg-bg1">
-  <h1 class="font-title text-[56px] text-text-title font-medium">
+<section class="flex min-h-screen flex-col items-center justify-center bg-bg1 px-6">
+  <h1 class="font-title text-[30px] font-medium text-text-title sm:text-[46px] md:text-[56px]">
     About This Site...
   </h1>
 
-  <p class="mt-6 max-w-4xl text-center text-[18px] text-text leading-[30px]">
+  <p class="mt-6 max-w-4xl text-center text-[16px] leading-8 text-text sm:text-[18px]">
     {t.about.welcome}<br />
     {t.about.explanation1}<br />
     {t.about.explanation2}

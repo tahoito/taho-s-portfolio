@@ -16,69 +16,282 @@ interface Props {
 }
 
 const { t, lang } = Astro.props;
-
-const langLink = lang === "ja" ? "/en" : "/";
-const langText = lang === "ja" ? "EN" : "JP";
 ---
 
 <header class="fixed top-0 left-0 z-50 w-full bg-bg1/80 backdrop-blur-md">
-    <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between">
+  <nav class="relative mx-auto flex h-16 max-w-6xl items-center px-3 sm:px-6 md:justify-between">
+    <div class="flex items-center md:hidden">
+      <button
+        id="menu-button"
+        type="button"
+        class="relative flex h-10 w-10 items-center justify-center text-text md:hidden"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span
+          class="absolute h-[2px] w-7 -translate-y-2 bg-current transition duration-300"
+        ></span>
 
-        <a href="/" class="text-2xl text-text-title">
-            Taho's Portfolio
+        <span
+          class="absolute h-[2px] w-7 bg-current transition duration-300"
+        ></span>
+
+        <span
+          class="absolute h-[2px] w-7 translate-y-2 bg-current transition duration-300"
+        ></span>
+      </button>
+    </div>
+
+    <a
+      href="/"
+      class="absolute left-1/2 -translate-x-1/2 text-lg text-text-title sm:text-xl md:static md:translate-x-0 md:text-2xl"
+    >
+      Taho's Portfolio
+    </a>
+
+    <!-- PCメニュー -->
+    <div class="hidden h-full items-center gap-10 md:flex">
+      <ul class="flex h-full text-[18px] text-text">
+        <li>
+          <a
+            href="#home"
+            class="flex h-full items-center px-6 transition hover:bg-cherry hover:text-white"
+          >
+            {t.navbar.home}
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#profile"
+            class="flex h-full items-center px-6 transition hover:bg-cherry hover:text-white"
+          >
+            {t.navbar.profile}
+          </a>
+        </li>
+
+        <!-- PC版 Portfolio -->
+        <li class="group relative">
+          <button
+            type="button"
+            class="flex h-full items-center px-6 transition hover:bg-cherry hover:text-white"
+          >
+            {t.navbar.portfolio}
+          </button>
+
+          <ul
+            class="absolute top-full left-0 hidden w-full min-w-[150px] flex-col bg-bg1/90 backdrop-blur-md group-hover:flex"
+          >
+            <li>
+              <a
+                href="#works"
+                class="flex h-16 items-center justify-center transition hover:bg-cherry hover:text-white"
+              >
+                {t.navbar.works}
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#skill"
+                class="flex h-16 items-center justify-center transition hover:bg-cherry hover:text-white"
+              >
+                {t.navbar.skills}
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#history"
+                class="flex h-16 items-center justify-center transition hover:bg-cherry hover:text-white"
+              >
+                {t.navbar.history}
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a
+            href="#contact"
+            class="flex h-full items-center px-6 transition hover:bg-cherry hover:text-white"
+          >
+            {t.navbar.contact}
+          </a>
+        </li>
+      </ul>
+
+      <!-- PC版 言語切り替え -->
+      <div class="flex items-center gap-2 text-sm">
+        <a
+          href="/"
+          class={lang === "ja" ? "text-cherry" : "text-text"}
+        >
+          JP
         </a>
 
-        <div class="flex h-full items-center gap-10">
-            <ul class="flex h-full text-[18px] text-text">
-              <li>
-                <a href="#home" class="flex h-full items-center px-6 transition hover:bg-cherry hover:text-white">
-                  {t.navbar.home}
-                </a>
-              </li>
-              <li>
-                <a href="#profile" class="flex h-full items-center px-6 transition hover:bg-cherry hover:text-white">
-                  {t.navbar.profile}
-                </a>
-              </li>
-              <li class="relative group">
-                <a class="flex h-full items-center px-6 transition hover:bg-cherry hover:text-white">
-                  {t.navbar.portfolio}
-                </a>
-                <ul class="absolute top-full hidden left-0 w-full flex-col bg-bg1/80 group-hover:flex">
-                  <li>
-                    <a href="#works" class="flex h-16 items-center justify-center transition hover:bg-cherry hover:text-white">
-                      {t.navbar.works}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#skill" class="flex h-16 items-center justify-center transition hover:bg-cherry hover:text-white">
-                      {t.navbar.skills}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#history" class="flex h-16 items-center justify-center transition hover:bg-cherry hover:text-white">
-                      {t.navbar.history}
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#contact" class="flex h-full items-center px-6 transition hover:bg-cherry hover:text-white">
-                  {t.navbar.contact}
-                  </a>
-              </li>
-            </ul>
-          <div class="flex items-center gap-2 text-sm">
-            <a
-              href="/"
-              class={lang === "ja" ? "text-cherry" : "text-text"}>JP</a>
-            <span class="text-gray-400">|</span>
-            <a
-              href="/en"
-              class={lang === "en" ? "text-cherry" : "text-text"}>
-              EN</a>
-          </div>
+        <span class="text-gray-400">|</span>
+
+        <a
+          href="/en"
+          class={lang === "en" ? "text-cherry" : "text-text"}
+        >
+          EN
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- スマホメニュー -->
+  <div
+    id="mobile-menu"
+    class="pointer-events-none invisible fixed top-16 left-0 h-[calc(100vh-4rem)] w-[85vw] max-w-[320px] overflow-y-auto -translate-x-full bg-bg1/95 opacity-0 shadow-xl backdrop-blur-md transition duration-300 sm:w-[70vw] md:hidden"
+  >
+    <nav class="flex flex-col text-center text-[18px] text-text">
+      <a
+        href="#home"
+        class="mobile-menu-link border-b border-text/10 py-4 transition hover:bg-cherry hover:text-white"
+      >
+        {t.navbar.home}
+      </a>
+
+      <a
+        href="#profile"
+        class="mobile-menu-link border-b border-text/10 py-4 transition hover:bg-cherry hover:text-white"
+      >
+        {t.navbar.profile}
+      </a>
+
+      <a
+        href="#works"
+        class="mobile-menu-link border-b border-text/10 py-4 transition hover:bg-cherry hover:text-white"
+      >
+        {t.navbar.works}
+      </a>
+
+      <a
+        href="#skill"
+        class="mobile-menu-link border-b border-text/10 py-4 transition hover:bg-cherry hover:text-white"
+      >
+        {t.navbar.skills}
+      </a>
+
+      <a
+        href="#history"
+        class="mobile-menu-link border-b border-text/10 py-4 transition hover:bg-cherry hover:text-white"
+      >
+        {t.navbar.history}
+      </a>
+
+      <a
+        href="#contact"
+        class="mobile-menu-link border-b border-text/10 py-4 transition hover:bg-cherry hover:text-white"
+      >
+        {t.navbar.contact}
+      </a>
+
+      <!-- スマホ版 言語切り替え -->
+      <div class="flex items-center justify-center gap-3 py-4 text-sm">
+        <a
+          href="/"
+          class={lang === "ja" ? "text-cherry" : "text-text"}
+        >
+          JP
+        </a>
+
+        <span class="text-gray-400">|</span>
+
+        <a
+          href="/en"
+          class={lang === "en" ? "text-cherry" : "text-text"}
+        >
+          EN
+        </a>
       </div>
     </nav>
+  </div>
 </header>
 
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>("#menu-button");
+  const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
+  const menuLines = menuButton?.querySelectorAll("span");
+  const mobileMenuLinks =
+    document.querySelectorAll<HTMLAnchorElement>(".mobile-menu-link");
+
+  const closeMenu = () => {
+    if (!menuButton || !mobileMenu || !menuLines) return;
+
+    mobileMenu.classList.add(
+      "pointer-events-none",
+      "invisible",
+      "-translate-x-full",
+      "opacity-0",
+    );
+
+    mobileMenu.classList.remove(
+      "pointer-events-auto",
+      "visible",
+      "translate-x-0",
+      "opacity-100",
+    );
+
+    menuLines[0].classList.remove("translate-y-0", "rotate-45");
+    menuLines[0].classList.add("-translate-y-2");
+
+    menuLines[1].classList.remove("opacity-0");
+
+    menuLines[2].classList.remove("translate-y-0", "-rotate-45");
+    menuLines[2].classList.add("translate-y-2");
+
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "メニューを開く");
+  };
+
+  menuButton?.addEventListener("click", () => {
+    if (!mobileMenu || !menuLines) return;
+
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+
+    if (isOpen) {
+      closeMenu();
+      return;
+    }
+
+    mobileMenu.classList.remove(
+      "pointer-events-none",
+      "invisible",
+      "-translate-x-full",
+      "opacity-0",
+    );
+
+    mobileMenu.classList.add(
+      "pointer-events-auto",
+      "visible",
+      "translate-x-0",
+      "opacity-100",
+    );
+
+    menuLines[0].classList.remove("-translate-y-2");
+    menuLines[0].classList.add("translate-y-0", "rotate-45");
+
+    menuLines[1].classList.add("opacity-0");
+
+    menuLines[2].classList.remove("translate-y-2");
+    menuLines[2].classList.add("translate-y-0", "-rotate-45");
+
+    menuButton.setAttribute("aria-expanded", "true");
+    menuButton.setAttribute("aria-label", "メニューを閉じる");
+  });
+
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+      closeMenu();
+    }
+  });
+</script>

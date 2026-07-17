@@ -19,7 +19,12 @@ const { t, lang } = Astro.props;
     About This Site...
   </h1>
 
-  <p class="mt-6 w-full max-w-4xl text-left text-[16px] leading-8 text-text sm:text-[18px]">
+  <p
+    class:list={[
+      "mt-6 w-full max-w-2xl text-left text-[16px] leading-8 text-text sm:text-[18px]",
+      lang === "ja" && "md:text-center",
+    ]}
+  >
     {t.about.welcome}<br class="hidden md:block" />
     {t.about.explanation1}<br class="hidden md:block" />
     {t.about.explanation2}

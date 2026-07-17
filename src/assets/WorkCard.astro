@@ -42,10 +42,12 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
 ---
 
 <div
-  class="fade-item group mx-auto w-fit cursor-pointer transition duration-300 hover:scale-[1.10]"
+  class="fade-item group w-full cursor-pointer transition duration-300 md:hover:scale-[1.05]"
   onclick={`document.getElementById('${id}')?.showModal()`}
 >
-  <div class="h-[193px] w-[332px] overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:shadow-xl">
+  <div
+    class="aspect-[332/193] w-full overflow-hidden bg-cherry shadow-md transition duration-300 group-hover:shadow-xl"
+  >
     <img
       src={images[0].src}
       alt={name}
@@ -53,7 +55,7 @@ const id = name.replace(/\s+/g, "-").toLowerCase();
     />
   </div>
 
-  <p class="mt-2 text-center text-[18px] font-medium text-text">
+  <p class="mt-2 text-center text-[16px] font-medium text-text sm:text-[18px]">
     {name}
   </p>
 </div>

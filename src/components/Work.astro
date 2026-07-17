@@ -84,7 +84,7 @@ const works = [
     name: "あますぽ",
     image: [Amasupo, Amasupo2, Amasupo3, Amasupo4, Amasupo5, Amasupo6],
     description: t.works.am_content,
-    period: t.works.cofit_period,
+    period: t.works.am_period,
     techs: ["Next.js", "TypeScript", "TailwindCSS", "Laravel", "PostgreSQL"],
     githubUrl:"https://github.com/tahoito/weather-app",
   },
@@ -106,25 +106,26 @@ const works = [
   },
 ];
 
-----
+---
 
 
-<section id="works" class="bg-bg1 py-24">
-  <div class="mx-auto flex max-w-6xl flex-col items-center gap-4">
+<section id="works" class="bg-bg1 px-6 py-20 md:py-24">
+  <div class="mx-auto flex max-w-6xl flex-col items-center">
 
-    <h1 class="font-title text-[56px] font-medium text-text-title">
+    <h1 class="font-title text-[36px] font-medium text-text-title sm:text-[46px] md:text-[56px]">
       Works
     </h1>
 
-    <p class="text-center text-[18px] leading-[30px] text-text">
+    <p class="mt-4 max-w-2xl text-center text-[16px] leading-8 text-text sm:text-[17px] md:text-[18px] md:leading-[30px]">
       {t.works.title}
     </p>
 
-    <div class="mt-16 grid w-full grid-cols-3 gap-8">
-      {works.map((work) => (
-        <WorkCard {...work} t={t} lang={lang} />
-      ))}
+    <div class="mt-10 grid w-full grid-cols-1 gap-10 sm:mt-12 md:grid-cols-2 md:gap-8 lg:mt-16 lg:grid-cols-3">
+      {
+        works.map((work) => (
+          <WorkCard {...work} t={t} lang={lang} />
+        ))
+      }
     </div>
-
   </div>
 </section>

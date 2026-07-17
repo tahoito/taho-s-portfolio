@@ -37,19 +37,14 @@ const { t, lang } = Astro.props;
     />
 
     <div
-      class="max-w-[500px] text-center text-[16px] leading-8 text-text sm:text-[17px] md:text-left md:text-[18px] md:leading-[30px]"
+      class="w-full max-w-[500px] text-left text-[16px] leading-8 text-text sm:text-[17px] md:text-[18px] md:leading-[30px]"
     >
       <p>
-        {t.profile.aboutMe}<br />
-        {t.profile.workMe}
+        {t.profile.aboutMe} {t.profile.workMe}
       </p>
 
       <p class="mt-4">
-        {t.profile.dream1}
-        <br />
-        {t.profile.dream2}
-        <br />
-        {t.profile.dream3}
+        {t.profile.dream1} {t.profile.dream2} {t.profile.dream3}
       </p>
     </div>
   </div>

@@ -26,147 +26,161 @@ interface Props {
       frontend: string;
       backend: string;
       databases: string;
-  },
+    };
   };
 
   lang: "ja" | "en";
 }
 
 const { t, lang } = Astro.props;
-
 ---
 
-<section id="skill" class="bg-bg2 py-24">
-    <div class="mx-auto flex max-w-7xl flex-col items-center gap-8">
+<section
+  id="skill"
+  class="overflow-hidden bg-bg2 px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+>
+  <div class="mx-auto flex w-full max-w-7xl flex-col items-center">
+    <h2
+      class="text-center font-title text-[38px] font-medium text-text-title sm:text-[46px] md:text-[52px] lg:text-[56px]"
+    >
+      My Skill Set
+    </h2>
 
-        <h1 class="font-title text-text-title text-[56px] font-medium">
-            My Skill Set
-        </h1>
+    <div class="mt-8 w-full max-w-6xl sm:mt-10">
+      <p
+        class="text-left text-[15px] leading-[27px] text-text sm:text-[16px] sm:leading-[29px] md:text-[18px] md:leading-[30px]"
+      >
+        {t.skills.description1}
+        <br class="hidden sm:block" />
 
-        <div class="max-w-6xl">
+        {t.skills.description2}
+        {t.skills.description3}
+        <br class="hidden sm:block" />
 
-            <p class="text-left text-[18px] text-text leading-[30px]">
-                {t.skills.description1}<br>
-                {t.skills.description2}
-                {t.skills.description3}<br>
-                {t.skills.description4}
-            </p>
+        {t.skills.description4}
+      </p>
 
-            <div class="mt-20 grid grid-cols-2 gap-10">
-                <div class="skill-card">
-                    <SkillCard 
-                        title={t.skills.programmingLanguages}
-                        skills={[
-                            { name: "Python", level: 5, icon: python },
-                            { name: "PHP", level: 5, icon: php },
-                            { name: "JavaScript", level: 4, icon: js },
-                            { name: "Java", level: 3, icon: java },
-                        ]}
-                    />
-                </div>
-
-                <div class="skill-card">
-                    <SkillCard
-                        title={t.skills.frontend}
-                        skills={[
-                            { name: "HTML/CSS", level: 5, icon: css },
-                            { name: "Tailwind CSS", level: 5, icon: tailwindcss },
-                            { name: "React", level: 4 , icon: react },
-                            { name: "Next.js", level: 3, icon: next },
-                        ]}
-                     />
-                </div>
-
-
-                <div class="skill-card">
-                    <SkillCard
-                        title={t.skills.backend}
-                        skills={[
-                            { name: "Laravel", level: 5, icon: laravel },
-                            { name: "Django", level: 5, icon: django },
-                            { name: "Flask", level: 4, icon: flask },
-                            { name: "SpringBoot", level: 2, icon: springboot },
-                        ]}
-                    />
-                </div>
-
-                <div class="skill-card">
-                    <SkillCard
-                    title={t.skills.databases}
-                    skills={[
-                        { name: "MySQL", level: 5 , icon: mysql },
-                        { name: "PostgreSQL", level: 3 , icon: postgresql },
-                    ]}
-                    />
-                </div>
-            </div>
+      <div
+        class="mt-12 grid grid-cols-1 gap-6 sm:mt-16 md:grid-cols-2 md:gap-8 lg:mt-20 lg:gap-10"
+      >
+        <div class="skill-card min-w-0">
+          <SkillCard
+            title={t.skills.programmingLanguages}
+            skills={[
+              { name: "Python", level: 5, icon: python },
+              { name: "PHP", level: 5, icon: php },
+              { name: "JavaScript", level: 4, icon: js },
+              { name: "Java", level: 3, icon: java },
+            ]}
+          />
         </div>
 
+        <div class="skill-card min-w-0">
+          <SkillCard
+            title={t.skills.frontend}
+            skills={[
+              { name: "HTML/CSS", level: 5, icon: css },
+              { name: "Tailwind CSS", level: 5, icon: tailwindcss },
+              { name: "React", level: 4, icon: react },
+              { name: "Next.js", level: 3, icon: next },
+            ]}
+          />
+        </div>
+
+        <div class="skill-card min-w-0">
+          <SkillCard
+            title={t.skills.backend}
+            skills={[
+              { name: "Laravel", level: 5, icon: laravel },
+              { name: "Django", level: 5, icon: django },
+              { name: "Flask", level: 4, icon: flask },
+              { name: "SpringBoot", level: 2, icon: springboot },
+            ]}
+          />
+        </div>
+
+        <div class="skill-card min-w-0">
+          <SkillCard
+            title={t.skills.databases}
+            skills={[
+              { name: "MySQL", level: 5, icon: mysql },
+              { name: "PostgreSQL", level: 3, icon: postgresql },
+            ]}
+          />
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <style>
-.skill-card {
-  opacity: 0;
-  transform: translateY(40px) scale(0.9);
-}
-
-.skill-card.show {
-  animation: popUp 0.7s ease-out forwards;
-}
-
-.skill-card:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.skill-card:nth-child(2) {
-  animation-delay: 0.15s;
-}
-
-.skill-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.skill-card:nth-child(4) {
-  animation-delay: 0.45s;
-}
-
-@keyframes popUp {
-  0% {
+  .skill-card {
+    width: 100%;
     opacity: 0;
     transform: translateY(40px) scale(0.9);
   }
 
-  60% {
-    opacity: 1;
-    transform: translateY(-4px) scale(1.03);
+  .skill-card.show {
+    animation: popUp 0.7s ease-out forwards;
   }
 
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+  .skill-card:nth-child(1) {
+    animation-delay: 0s;
   }
-}
+
+  .skill-card:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .skill-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .skill-card:nth-child(4) {
+    animation-delay: 0.45s;
+  }
+
+  @keyframes popUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px) scale(0.9);
+    }
+
+    60% {
+      opacity: 1;
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 </style>
 
 <script>
-const skillSection = document.querySelector("#skill");
+  const skillSection = document.querySelector("#skill");
 
-if (skillSection) {
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+  if (skillSection) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
 
-      entry.target.querySelectorAll(".skill-card").forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.add("show");
-        }, index * 150);
-      });
+          entry.target
+            .querySelectorAll(".skill-card")
+            .forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add("show");
+              }, index * 150);
+            });
 
-      obs.unobserve(entry.target);
-    });
-  }, { threshold: 0.2 });
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 },
+    );
 
-  observer.observe(skillSection);
-}
+    observer.observe(skillSection);
+  }
 </script>

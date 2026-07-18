@@ -1,4 +1,5 @@
 ---
+import type { ImageMetadata } from "astro";
 import Star from "../assets/icons/star.svg";
 
 interface Skill {
@@ -13,40 +14,61 @@ interface Props {
 }
 
 const { title, skills } = Astro.props;
-const isSingleColumn = title === "データベース";
+
+const isSingleColumn =
+  title === "データベース" || title === "Databases";
 ---
 
-<div class="rounded-[16px] bg-cherry-bg p-8">
-    <h3 class="border-b border-text pb-2 text-[24px] font-medium">
-        {title}
-    </h3>
+<div class="w-full rounded-[16px] bg-cherry-bg p-5 sm:p-8">
+  <h3
+    class="border-b border-text pb-2 text-[20px] font-medium text-text sm:text-[24px]"
+  >
+    {title}
+  </h3>
 
-    <div class:list={["mt-8 grid gap-x-10 gap-y-8", isSingleColumn ? "grid-cols-1" : "grid-cols-2"]}>
-        {skills.map((skill) => (
-        <div class="flex gap-4">
-            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-bg1">
+  <div
+    class:list={[
+      "mt-6 grid gap-x-6 gap-y-6 sm:mt-8 sm:gap-x-10 sm:gap-y-8",
+      isSingleColumn
+        ? "grid-cols-1"
+        : "grid-cols-1 sm:grid-cols-2",
+    ]}
+  >
+    {
+      skills.map((skill) => (
+        <div class="flex min-w-0 items-center gap-3 sm:gap-4">
+          <div
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bg1 sm:h-12 sm:w-12"
+          >
             <img
-                src={skill.icon.src}
-                alt={skill.name}
-                class="h-6 w-6"
+              src={skill.icon.src}
+              alt={skill.name}
+              class="h-5 w-5 sm:h-6 sm:w-6"
             />
-            </div>
+          </div>
 
-            <div>
-                <p class="text-[18px]">{skill.name}</p>
+          <div class="min-w-0">
+            <p class="text-[16px] text-text sm:text-[18px]">
+              {skill.name}
+            </p>
 
-                <div class="mt-1 flex gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                        class:list={[
-                        "h-5 w-5",
-                        i < skill.level ? "opacity-100" : "opacity-20",
-                        ]}
-                    />
-                    ))}
-                </div>
+            <div class="mt-1 flex gap-1">
+              {
+                Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    class:list={[
+                      "h-4 w-4 sm:h-5 sm:w-5",
+                      i < skill.level
+                        ? "opacity-100"
+                        : "opacity-20",
+                    ]}
+                  />
+                ))
+              }
             </div>
+          </div>
         </div>
-    ))}
-    </div>
+      ))
+    }
+  </div>
 </div>

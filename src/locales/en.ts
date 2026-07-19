@@ -70,6 +70,17 @@ export const en = {
 
     history: {
         title: "Let's take a look back at Taho's journey so far.",
+        year_2008: "Born in Nagoya",
+        description_2008: "I loved puzzles and making things from a young age",
+        year_2018: "Started Programming",
+        description_2018: "Joined tea ceremony club in junior high school",
+        year_2023: "KADOKAWA DOWANGO IT Academy",
+        description_2023:"Discovered the joy of app development",
+        year_2025: "Won the Grand Prize for My Graduation Project",
+        description_2025: "Focused on improving my English skills",
+        year_2026: "Started my Journey Abroad",
+        description_2026:"Entered Asia Pacific University in Malaysia",
+
     },
 
     contact: {
@@ -77,4 +88,6 @@ export const en = {
         message2: "If you have any questions or would like to get in touch, please feel free to contact me.",
     }
 };
+
+
 

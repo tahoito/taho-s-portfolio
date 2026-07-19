@@ -17,26 +17,17 @@ export const histories = [
     image: "/images/history/2018.jpg",
   },
   {
-    year: "2020〜",
-    title: "KADOKAWA情報工科学院",
-    description: [
-      "将来はプログラマーを目指すようになる",
-      "KADOKAWA情報工科学院へ入学",
-    ],
-    image: "/images/history/2020.jpg",
-  },
-  {
     year: "2023〜",
     title: "KADOKAWA情報工科学院",
     description: [
-      "通っていたロボット教室で講師としてアルバイトを経験する",
+      "将来はプログラマーを目指すようになる",
       "アプリ開発の楽しさを知っていく",
     ],
-    image: "/images/history/2023.jpg",
+    image: "/images/history/2020.png",
   },
   {
     year: "2025〜",
-    title: "KADOKAWA情報工科学院",
+    title: "卒業制作でグランプリを取る",
     description: [
       "海外大学への進学を決意する",
       "英語の勉強に専念する",
@@ -45,7 +36,7 @@ export const histories = [
   },
   {
     year: "2026〜",
-    title: "KADOKAWA情報工科学院",
+    title: "海外に行く！",
     description: [
       "マレーシアのAPU大学に進学する",
       "世界で活躍できるプログラマーを目指す",

@@ -1,3 +1,9 @@
+import history2008 from "../assets/images/history/2008.jpg";
+import history2018 from "../assets/images/history/2008.jpg";
+import history2023 from "../assets/images/history/2023.png";
+import history2025 from "../assets/images/history/2023.png";
+import history2026 from "../assets/images/history/2023.png";
+
 export const histories = [
   {
     year: "2008〜",
@@ -5,7 +11,7 @@ export const histories = [
     description: [
       "小さい頃からパズルや物作りが好き",
     ],
-    image: "/images/history/2008.jpg",
+    image: history2008,
   },
   {
     year: "2018〜",
@@ -14,7 +20,7 @@ export const histories = [
       "小学校では合唱部",
       "プログラミング教室へ通い始める",
     ],
-    image: "/images/history/2018.jpg",
+    image: history2018,
   },
   {
     year: "2023〜",
@@ -23,7 +29,7 @@ export const histories = [
       "将来はプログラマーを目指すようになる",
       "アプリ開発の楽しさを知っていく",
     ],
-    image: "/images/history/2020.png",
+    image: history2023,
   },
   {
     year: "2025〜",
@@ -32,7 +38,7 @@ export const histories = [
       "海外大学への進学を決意する",
       "英語の勉強に専念する",
     ],
-    image: "/images/history/2025.jpg",
+    image: history2025,
   },
   {
     year: "2026〜",
@@ -41,6 +47,6 @@ export const histories = [
       "マレーシアのAPU大学に進学する",
       "世界で活躍できるプログラマーを目指す",
     ],
-    image: "/images/history/2026.jpg",
+    image: history2026,
   },
 ];

@@ -1,58 +1,30 @@
 ---
-import { histories } from "../data/history";
-import HistoryItem from "../assets/HistoryItem.astro";
+import HistorySection from "../assets/HistorySection.astro";
 
 interface Props {
-  t?: any;
-  lang?: "ja" | "en";
+  t: {
+    history: {
+      title_2008: string;
+      description_2008: string[];
+
+      title_2018: string;
+      description_2018: string[];
+
+      title_2023: string;
+      description_2023: string[];
+
+      title_2025: string;
+      description_2025: string[];
+
+      title_2026: string;
+      description_2026: string[];
+    };
+  };
+
+  lang: "ja" | "en";
 }
 
 const { t, lang } = Astro.props;
-
-const historyTitle =
-  t?.history?.title ??
-  (lang === "ja"
-    ? "これまでの軌跡"
-    : "Let's take a look back at my journey.");
 ---
 
-<section
-  id="history"
-  class="overflow-hidden bg-bg1 px-5 py-16 sm:px-8 sm:py-20 md:py-24 lg:px-12 lg:py-32"
->
-  <div class="mx-auto w-full max-w-6xl">
-    <!-- タイトル -->
-    <div class="mb-12 text-center sm:mb-16 md:mb-20">
-      <h2
-        class="font-title text-[38px] font-medium text-text-title sm:text-[46px] md:text-[52px] lg:text-[56px]"
-      >
-        History
-      </h2>
-
-      <p
-        class="mx-auto mt-3 max-w-2xl text-[15px] leading-[26px] text-text sm:text-[17px] sm:leading-[28px] md:text-[20px]"
-      >
-        {historyTitle}
-      </p>
-    </div>
-
-
-    <div class="relative w-full">
-      <div
-        class="absolute bottom-0 left-[7px] top-0 w-[6px] -translate-x-1/2 bg-cherry md:hidden"
-      ></div>
-
-      <div
-        class="absolute bottom-0 left-[210px] top-0 hidden w-[16px] -translate-x-1/2 bg-cherry md:block"
-      ></div>
-
-      <div class="relative space-y-10 sm:space-y-14 md:space-y-20">
-        {
-          histories.map((history) => (
-            <HistoryItem {...history} />
-          ))
-        }
-      </div>
-    </div>
-  </div>
-</section>
+<HistorySection t={t} lang={lang} />

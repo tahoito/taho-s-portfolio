@@ -1,24 +1,57 @@
 ---
-import { histories } from "../data/history";
-import HistoryItem from "./HistoryItem.astro";
+import { getHistories } from "../data/history";
+import HistoryItem from "../assets/HistoryItem.astro";
+
+interface Props {
+  t: {
+    history: {
+      title_2008: string;
+      description_2008: string[];
+
+      title_2018: string;
+      description_2018: string[];
+
+      title_2023: string;
+      description_2023: string[];
+
+      title_2025: string;
+      description_2025: string[];
+
+      title_2026: string;
+      description_2026: string[];
+    };
+  };
+
+  lang: "ja" | "en";
+}
+
+const { t } = Astro.props;
+
+const histories = getHistories(t.history);
 ---
 
-<section class="overflow-hidden px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
-  <div class="relative mx-auto w-full max-w-7xl">
-    <div
-      class="absolute bottom-0 left-[8px] top-0 w-[4px] rounded-full bg-primary md:hidden"
-    ></div>
+<section
+  id="history"
+  class="flex min-h-screen flex-col items-center justify-center bg-bg2 py-24"
+>
+  <h2 class="font-title text-[56px] font-medium text-text-title">
+    History...
+  </h2>
 
-    <div
-      class="absolute bottom-0 left-[180px] top-0 hidden w-[6px] rounded-full bg-primary md:block"
-    ></div>
+  <p class="mt-4 text-center text-[18px] text-text">
+    Let's take a look at my journey so far.
+  </p>
 
-    <div class="space-y-10 pl-7 sm:space-y-14 md:space-y-0 md:pl-0">
-      {
-        histories.map((history) => (
-          <HistoryItem {...history} />
-        ))
-      }
-    </div>
+  <div class="mt-20 flex w-full max-w-6xl flex-col gap-10">
+    {
+      histories.map((history) => (
+        <HistoryItem
+          year={history.year}
+          title={history.title}
+          description={history.description}
+          image={history.image}
+        />
+      ))
+    }
   </div>
 </section>

@@ -12,12 +12,13 @@ html {
 }
 
 @theme {
-  --color-cherry: #EF7588;
+  --color-cherry: #E96B86;
   --color-bg1: #FFFDFE;
-  --color-bg2: #FFF6F9;
-  --color-text-title: #333333;
-  --color-text: #4B4B4B;
-  --color-star: #FFFC4A;
-  --color-cherry-bg: #FADDE4;
+  --color-bg2: #FFF7FA;
+  --color-card: #FCE7EF;
+  --color-text-title: #2F2F2F;
+  --color-text: #5B5B5B;
+  --color-star: #FFD85C;
+  --color-cherry-bg: #F7D7E2;
 }
 

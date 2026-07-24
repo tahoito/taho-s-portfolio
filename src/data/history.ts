@@ -1,8 +1,8 @@
 import history2008 from "../assets/images/history/2008.jpg";
-import history2018 from "../assets/images/history/2008.jpg";
+import history2018 from "../assets/images/history/2018.jpeg";
 import history2023 from "../assets/images/history/2023.png";
-import history2025 from "../assets/images/history/2023.png";
-import history2026 from "../assets/images/history/2023.png";
+import history2025 from "../assets/images/history/2025.jpeg";
+import history2026 from "../assets/images/history/2026.jpeg";
 
 interface HistoryTranslations {
   title_2008: string;

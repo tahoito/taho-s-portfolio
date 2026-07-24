@@ -5,6 +5,7 @@ import HistoryItem from "../assets/HistoryItem.astro";
 interface Props {
   t: {
     history: {
+      title: string;
       title_2008: string;
       description_2008: string[];
 
@@ -32,14 +33,14 @@ const histories = getHistories(t.history);
 
 <section
   id="history"
-  class="flex min-h-screen flex-col items-center justify-center bg-bg2 py-24"
+  class="flex min-h-screen flex-col items-center justify-center bg-bg1 py-24"
 >
   <h2 class="font-title text-[56px] font-medium text-text-title">
     History...
   </h2>
 
   <p class="mt-4 text-center text-[18px] text-text">
-    Let's take a look at my journey so far.
+    {t.history.title}
   </p>
 
   <div class="relative mt-20 w-full max-w-6xl">

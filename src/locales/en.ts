@@ -38,7 +38,7 @@ export const en = {
         This was an individual project developed for a school review. I created it so I could recreate dishes my parents had cooked by keeping my own recipe records. To make the app more practical, I added a shopping list feature that lets users transfer recipe ingredients directly to a checklist, providing a smooth experience from recipe management to grocery shopping.
         `,
         ts_period:"July 2025 - September 2025",
-        pf_content:"ポートフォリオの説明",
+        pf_content: `This portfolio represents my journey as an aspiring software engineer. It showcases my projects, skills, and personal growth. I had always wanted to create a portfolio that truly reflects who I am, and I'm excited to finally make it a reality. As I continue learning and growing, I will keep improving this portfolio as well.`,
         pf_period:"June 2026 - July 2027",
         am_content:`This is a web application that recommends indoor and outdoor spots based on the weather in each area of Nagoya City. It is integrated with Google Maps, allowing users to explore locations on a map and search for places by purpose, date, and time. This was a team project, and I was responsible for project planning, team leadership, and backend development.
 

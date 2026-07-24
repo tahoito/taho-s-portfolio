@@ -69,33 +69,33 @@ export const en = {
     },
 
     history: {
-        title: "Let's take a look back at Taho's journey so far.",
+        title: "Let’s take a look at Taho’s journey so far.",
 
         title_2008: "Born in Nagoya",
         description_2008: [
-            "I loved puzzles and making things from a young age",
+            "I have enjoyed making things and solving puzzles since I was young.",
         ],
 
         title_2018: "Started Programming",
         description_2018: [
-            "Joined the tea ceremony club in junior high school",
+            "After building a trash-bin robot by myself for the first time, I began to dream of creating apps that help people.",
         ],
 
-        title_2023: "Entered KADOKAWA DWANGO IT Academy",
+        title_2023: "Entered KADOKAWA DWANGO Institute of Information Technology",
         description_2023: [
-            "Discovered the joy of app development",
+            "I developed my coding skills and became able to create programs on my own.",
         ],
 
         title_2025: "Won the Grand Prize for My Graduation Project",
         description_2025: [
-            "Focused on improving my English skills",
+            "I began preparing seriously for the TOEFL and improving my English skills.",
         ],
 
-        title_2026: "Started My Journey Abroad",
+        title_2026: "Studying Abroad",
         description_2026: [
-            "Entered Asia Pacific University in Malaysia",
+            "I am studying at Asia Pacific University in Malaysia to become an engineer.",
         ],
-    },
+        },
 
     contact: {
         message1: "Thank you for visiting my portfolio.",

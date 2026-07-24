@@ -8,51 +8,83 @@ interface Props {
   title?: string;
 }
 
-const { year, image, description, title } = Astro.props;
+const {
+  year,
+  image,
+  description,
+  title,
+} = Astro.props;
+
+const imageSrc =
+  typeof image === "string" ? image : image.src;
 ---
 
 <div
-  class="fade-item grid min-h-0 grid-cols-1 items-center gap-5 py-6 md:min-h-[260px] md:grid-cols-[180px_80px_257px_1fr] md:gap-0 md:py-0"
+  class="grid min-h-0 grid-cols-[35px_1fr] items-start md:min-h-[260px] md:grid-cols-[180px_80px_257px_1fr] md:items-center"
 >
-  <p
-    class="text-center text-[32px] font-semibold text-cherry sm:text-[36px] md:text-left md:text-[40px]"
-  >
-    {year}
-  </p>
-
-  <div class="relative hidden h-full min-h-[140px] md:block">
+  <!-- スマホ用の丸 -->
+  <div class="relative flex justify-center pt-2 md:hidden">
     <div
-      class="absolute left-6 top-1/2 h-[15px] w-[78px] -translate-y-1/2 bg-cherry"
+      class="relative z-20 h-[14px] w-[14px] rounded-full bg-cherry ring-4 ring-bg1"
     ></div>
   </div>
 
+  <!-- スマホ用コンテンツ -->
+  <div class="min-w-0 pl-4 md:contents">
+    <!-- 年 -->
+    <p
+      class="text-[28px] font-semibold leading-none text-cherry sm:text-[32px] md:text-left md:text-[40px]"
+    >
+      {year}
+    </p>
 
-  <div
-    class="relative z-10 mx-auto h-[190px] w-[190px] shrink-0 overflow-hidden rounded-full bg-[#d9d9d9] sm:h-[220px] sm:w-[220px] md:ml-4 md:mr-0 md:h-[257px] md:w-[257px]"
-  >
-    <img
-      src={typeof image === "string" ? image : image.src}
-      alt={title ?? `${year}年の写真`}
-      class="h-full w-full object-cover"
-      loading="lazy"
-    />
-  </div>
+    <!-- PC用の横線 -->
+    <div
+      class="relative hidden h-full min-h-[140px] md:block"
+    >
+      <div
+        class="absolute left-6 top-1/2 h-[15px] w-[78px] -translate-y-1/2 bg-cherry"
+      ></div>
+    </div>
 
-  <div
-    class="space-y-2 text-center text-[16px] leading-[28px] text-text sm:text-[18px] sm:leading-[30px] md:pl-10 md:text-left md:text-[24px] md:leading-normal"
-  >
-    {
-      title && (
-        <h3 class="mb-3 text-[20px] font-semibold sm:text-[22px] md:text-[24px]">
-          {title}
-        </h3>
-      )
-    }
+    <!-- 写真 -->
+    <div
+      class="mt-5 h-[190px] w-[190px] overflow-hidden rounded-full bg-[#d9d9d9] sm:h-[220px] sm:w-[220px] md:mx-0 md:mt-0 md:h-[257px] md:w-[257px]"
+    >
+      <img
+        src={imageSrc}
+        alt={title ?? year}
+        class="h-full w-full object-cover"
+        loading="lazy"
+      />
+    </div>
 
-    {
-      description.map((text) => (
-        <p>{text}</p>
-      ))
-    }
+    <!-- テキスト -->
+    <div
+      class="mt-6 min-w-0 pb-3 text-text md:mt-0 md:pl-10"
+    >
+      {
+        title && (
+          <h3
+            class="break-words text-[19px] font-semibold leading-8 sm:text-[21px] md:text-[22px]"
+          >
+            {title}
+          </h3>
+        )
+      }
+
+      <div
+        class:list={[
+          "space-y-2 text-[15px] leading-7 sm:text-[16px] md:text-[18px] md:leading-8",
+          title ? "mt-2" : "",
+        ]}
+      >
+        {
+          description.map((text) => (
+            <p class="break-words">{text}</p>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </div>

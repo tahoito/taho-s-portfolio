@@ -1,4 +1,15 @@
 export const en = {
+    hero: {
+        playlist: "TAHO'S PLAYLIST",
+        messages: [
+            "Turning ideas into reality.",
+            "Music means everything to me.",
+            "I take the leap and figure it out.",
+            "Growing little by little, every day.",
+            "Bringing ideas to life through code.",
+        ],
+    },
+
     navbar: {
         home: "Home",
         profile: "Profile",

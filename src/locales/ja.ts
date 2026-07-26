@@ -1,4 +1,14 @@
 export const ja = {
+    hero: {
+        playlist: "TAHO'S PLAYLIST",
+        messages: [
+            "作りたいものを、実現する。",
+            "音楽が何よりも好き。",
+            "何とかなるから、挑戦する。",
+            "毎日コツコツ続ける。",
+            "コードでアイデアを形にする。",
+        ],
+        },
     navbar: {
         home: "ホーム",
         profile: "プロフィール",

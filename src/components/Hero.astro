@@ -1,18 +1,284 @@
+---
+interface Props {
+  t: {
+    hero: {
+      playlist: string;
+      messages: string[];
+    };
+  };
+
+  lang: "ja" | "en";
+}
+
+const { t, lang } = Astro.props;
+---
+
 <section
   id="home"
-  class="mt-16 flex min-h-[calc(100dvh-4rem)] items-center justify-center bg-cherry-bg px-4"
+  class="relative mt-16 flex min-h-[calc(100dvh-4rem)] w-full items-center justify-center overflow-hidden bg-cherry-bg px-5 py-16"
 >
-  <div class="relative">
-    <div class="absolute left-0 top-0 -translate-y-20 text-[28px] text-cherry md:text-[53px]">
-      Taho's
+  <div class="w-full max-w-[1050px]">
+    <!-- メインタイトル -->
+    <div class="text-center">
+      <p
+        class="font-title text-[20px] tracking-[0.12em] text-cherry sm:text-[26px]"
+      >
+        Welcome to
+      </p>
+
+      <h1
+        class="mt-2 font-title text-[52px] font-medium leading-[0.95] text-text-title sm:text-[72px] md:text-[96px]"
+      >
+        Taho's Portfolio
+      </h1>
     </div>
 
-    <h1 class="font-title text-[60px] leading-none text-text-title sm:text-[90px] md:text-[189px]">
-      Portfolio
-    </h1>
+    <!-- 音楽プレイヤー -->
+    <div
+      class="mt-14 flex w-full flex-col items-center gap-8 md:mt-20 md:grid md:grid-cols-[260px_minmax(0,1fr)_90px] md:items-center md:gap-10"
+      data-player
+      data-messages={JSON.stringify(t.hero.messages)}
+    >
+      <!-- 左：プレイリスト画像 -->
+      <div
+        class="aspect-square w-full max-w-[260px] overflow-hidden rounded-[28px] bg-cherry shadow-[0_18px_45px_rgba(239,117,136,0.2)]"
+      >
+        <!--
+        <img
+          src="/images/playlist-cover.png"
+          alt="Taho's Playlist"
+          class="h-full w-full object-cover"
+        />
+        -->
+      </div>
 
-    <div class="absolute bottom-2 right-0 translate-y-20 text-[24px] text-cherry md:text-[53px]">
-      Engineer
+      <!-- 中央：メッセージとコントロール -->
+      <div
+        class="flex w-full min-w-0 flex-col items-center text-center md:items-start md:text-left"
+      >
+        <p
+          class="text-[13px] font-semibold tracking-[0.2em] text-cherry sm:text-[15px]"
+        >
+          {t.hero.playlist}
+        </p>
+
+        <!-- 切り替わるメッセージ -->
+        <div
+          class="mt-3 flex min-h-[54px] w-full min-w-0 items-center justify-center md:justify-start"
+        >
+          <h2
+            class="w-full overflow-hidden whitespace-nowrap text-ellipsis font-title text-[20px] font-medium leading-[1.2] text-text-title transition duration-300 sm:text-[25px] md:text-[27px] lg:text-[30px]"
+            data-message
+          >
+            {t.hero.messages[0]}
+          </h2>
+        </div>
+
+        <!-- 番号と進行バー -->
+        <div class="mt-4 flex w-full items-center gap-4">
+          <span
+            class="w-[34px] shrink-0 text-[13px] text-text"
+            data-current-number
+          >
+            01
+          </span>
+
+          <div class="h-[5px] flex-1 overflow-hidden rounded-full bg-white/80">
+            <div
+              class="h-full rounded-full bg-cherry transition-all duration-300"
+              style={`width: ${100 / t.hero.messages.length}%`}
+              data-progress
+            >
+            </div>
+          </div>
+
+          <span
+            class="w-[34px] shrink-0 text-right text-[13px] text-text"
+            data-total-number
+          >
+            {String(t.hero.messages.length).padStart(2, "0")}
+          </span>
+        </div>
+
+        <!-- 前・再生・次 -->
+        <div
+          class="mt-6 flex w-full items-center justify-center gap-7 md:justify-start"
+        >
+          <!-- 前へ -->
+          <button
+            type="button"
+            class="group flex h-[58px] w-[58px] items-center justify-center text-text transition duration-300 hover:scale-110 hover:text-cherry"
+            aria-label={lang === "ja" ? "前のメッセージ" : "Previous message"}
+            data-previous
+          >
+            <svg
+              class="h-8 w-8 transition duration-300 group-hover:-translate-x-1"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M7 5H9V19H7V5ZM10 12L19 5V19L10 12Z" />
+            </svg>
+          </button>
+
+          <!-- Aboutへ移動 -->
+          <a
+            href="#about"
+            class="group flex h-[58px] w-[58px] items-center justify-center rounded-full bg-cherry text-white shadow-sm transition duration-300 hover:scale-110 hover:shadow-md"
+            aria-label={lang === "ja" ? "Aboutへ移動" : "Go to About section"}
+          >
+            <svg
+              class="ml-1 h-7 w-7 transition duration-300 group-hover:scale-110"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M8 5V19L19 12L8 5Z" />
+            </svg>
+          </a>
+
+          <!-- 次へ -->
+          <button
+            type="button"
+            class="group flex h-[58px] w-[58px] items-center justify-center text-text transition duration-300 hover:scale-110 hover:text-cherry"
+            aria-label={lang === "ja" ? "次のメッセージ" : "Next message"}
+            data-next
+          >
+            <svg
+              class="h-8 w-8 transition duration-300 group-hover:translate-x-1"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M15 5H17V19H15V5ZM14 12L5 19V5L14 12Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- 右：音波 -->
+      <div
+        class="flex h-[100px] items-center justify-center gap-[7px] md:justify-end"
+        aria-hidden="true"
+      >
+        <span class="h-[34px] w-[8px] rounded-full bg-cherry/55"></span>
+        <span class="h-[52px] w-[8px] rounded-full bg-cherry"></span>
+        <span class="h-[42px] w-[8px] rounded-full bg-cherry/70"></span>
+        <span class="h-[60px] w-[8px] rounded-full bg-cherry"></span>
+        <span class="h-[30px] w-[8px] rounded-full bg-cherry/55"></span>
+      </div>
     </div>
   </div>
+
+  <!-- 背景装飾 -->
+  <span
+    class="pointer-events-none absolute left-[6%] top-[18%] hidden text-[34px] text-star md:block"
+    aria-hidden="true"
+  >
+    ✦
+  </span>
+
+  <span
+    class="pointer-events-none absolute right-[8%] top-[25%] hidden text-[30px] text-cherry md:block"
+    aria-hidden="true"
+  >
+    ＋
+  </span>
+
+  <span
+    class="pointer-events-none absolute bottom-[10%] right-[12%] hidden text-[30px] text-accent-blue md:block"
+    aria-hidden="true"
+  >
+    ✦
+  </span>
 </section>
+
+<script>
+  const players = document.querySelectorAll<HTMLElement>("[data-player]");
+
+  players.forEach((player) => {
+    let messages: string[] = [];
+
+    try {
+      messages = JSON.parse(player.dataset.messages ?? "[]");
+    } catch (error) {
+      console.error("Failed to read hero messages:", error);
+      return;
+    }
+
+    if (messages.length === 0) {
+      return;
+    }
+
+    const message =
+      player.querySelector<HTMLElement>("[data-message]");
+
+    const currentNumber =
+      player.querySelector<HTMLElement>("[data-current-number]");
+
+    const totalNumber =
+      player.querySelector<HTMLElement>("[data-total-number]");
+
+    const progress =
+      player.querySelector<HTMLElement>("[data-progress]");
+
+    const previousButton =
+      player.querySelector<HTMLButtonElement>("[data-previous]");
+
+    const nextButton =
+      player.querySelector<HTMLButtonElement>("[data-next]");
+
+    let currentIndex = 0;
+    let animationTimer: number | undefined;
+
+    const updateMessage = () => {
+      if (currentNumber) {
+        currentNumber.textContent = String(currentIndex + 1).padStart(2, "0");
+      }
+
+      if (totalNumber) {
+        totalNumber.textContent = String(messages.length).padStart(2, "0");
+      }
+
+      if (progress) {
+        const progressWidth =
+          ((currentIndex + 1) / messages.length) * 100;
+
+        progress.style.width = `${progressWidth}%`;
+      }
+
+      if (!message) {
+        return;
+      }
+
+      message.style.opacity = "0";
+      message.style.transform = "translateY(6px)";
+
+      if (animationTimer) {
+        window.clearTimeout(animationTimer);
+      }
+
+      animationTimer = window.setTimeout(() => {
+        message.textContent = messages[currentIndex];
+        message.style.opacity = "1";
+        message.style.transform = "translateY(0)";
+      }, 180);
+    };
+
+    previousButton?.addEventListener("click", () => {
+      currentIndex =
+        (currentIndex - 1 + messages.length) % messages.length;
+
+      updateMessage();
+    });
+
+    nextButton?.addEventListener("click", () => {
+      currentIndex =
+        (currentIndex + 1) % messages.length;
+
+      updateMessage();
+    });
+
+    updateMessage();
+  });
+</script>

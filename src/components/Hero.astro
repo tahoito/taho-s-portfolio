@@ -100,26 +100,19 @@ const content = text[lang];
     >
       {content.category}
     </p>
+    <a
+        href="#about"
+        class="group mt-6 flex items-center justify-center sm:mt-8"
+        aria-label="Scroll to profile section"
+      >
+        <CircleChevronDown
+          size={60}
+          strokeWidth={1.5}
+          class="scroll-arrow text-[#EF7588] transition-all duration-300 group-hover:scale-110"
+      />
+    </a>
   </div>
 
-  <!-- スクロールボタン -->
-  <a
-    href="#about"
-    class="group absolute bottom-20 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center sm:bottom-8"
-    aria-label="Scroll to profile section"
-  >
-    <CircleChevronDown
-      size={52}
-      strokeWidth={1.5}
-      class="scroll-arrow text-[#EF7588] transition-transform duration-300 group-hover:scale-110 sm:hidden"
-    />
-
-    <CircleChevronDown
-      size={65}
-      strokeWidth={1.5}
-      class="scroll-arrow hidden text-[#EF7588] transition-transform duration-300 group-hover:scale-110 sm:block"
-    />
-  </a>
 </section>
 
 <style>

@@ -11,12 +11,10 @@ const text = {
   ja: {
     name: "TAHO ITO",
     category: "Full Stack Developer ・ UI Designer ・ Creator",
-    scroll: "SCROLL",
   },
   en: {
     name: "TAHO ITO",
     category: "Full Stack Developer ・ UI Designer ・ Creator",
-    scroll: "SCROLL",
   },
 };
 
@@ -25,46 +23,48 @@ const content = text[lang];
 
 <section
   id="home"
-  class="relative mt-16 flex min-h-[calc(100dvh-4rem)] w-full items-center justify-center overflow-hidden bg-[#F9DDE5] px-5 py-20"
+  class="relative mt-16 flex min-h-[calc(100svh-4rem)] w-full items-center justify-center overflow-hidden bg-[#F9DDE5] px-5 py-16 sm:min-h-[calc(100dvh-4rem)] sm:px-8 sm:py-20"
 >
   <!-- 左下の曲線 -->
   <div
-    class="pointer-events-none absolute -bottom-28 -left-24 h-72 w-72 rounded-full border-[3px] border-[#EF7588]/25"
+    class="pointer-events-none absolute -bottom-20 -left-20 h-52 w-52 rounded-full border-[2px] border-[#EF7588]/25 sm:-bottom-28 sm:-left-24 sm:h-72 sm:w-72 sm:border-[3px]"
   ></div>
 
   <!-- 右上の曲線 -->
   <div
-    class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full border-[3px] border-[#EF7588]/25"
+    class="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full border-[2px] border-[#EF7588]/25 sm:-right-24 sm:-top-24 sm:h-72 sm:w-72 sm:border-[3px]"
   ></div>
 
-  <!-- 左の小さな星 -->
+  <!-- 左の星 -->
   <span
-    class="pointer-events-none absolute left-[10%] top-[32%] text-3xl text-[#F4C95D]"
+    class="pointer-events-none absolute left-[7%] top-[25%] text-xl text-[#F4C95D] sm:left-[10%] sm:top-[32%] sm:text-3xl"
     aria-hidden="true"
   >
     ✦
   </span>
 
-  <!-- 右の小さな星 -->
+  <!-- 右の星 -->
   <span
-    class="pointer-events-none absolute right-[11%] top-[36%] text-3xl text-[#EF7588]"
+    class="pointer-events-none absolute right-[8%] top-[28%] text-xl text-[#EF7588] sm:right-[11%] sm:top-[36%] sm:text-3xl"
     aria-hidden="true"
   >
     ✦
   </span>
 
   <!-- メイン -->
-  <div class="relative z-10 flex flex-col items-center text-center">
+  <div
+    class="relative z-10 flex -translate-y-8 flex-col items-center text-center sm:-translate-y-5 md:translate-y-0"
+  >
     <!-- タイトル周辺の星 -->
     <span
-      class="pointer-events-none absolute -left-8 top-4 rotate-[-12deg] text-3xl text-[#F4C95D] sm:-left-14"
+      class="pointer-events-none absolute -left-3 top-0 rotate-[-12deg] text-xl text-[#F4C95D] min-[390px]:-left-6 sm:-left-14 sm:top-4 sm:text-3xl"
       aria-hidden="true"
     >
       ✧
     </span>
 
     <span
-      class="pointer-events-none absolute -right-8 bottom-24 rotate-12 text-2xl text-[#EF7588] sm:-right-14"
+      class="pointer-events-none absolute -right-2 bottom-20 rotate-12 text-lg text-[#EF7588] min-[390px]:-right-6 sm:-right-14 sm:bottom-24 sm:text-2xl"
       aria-hidden="true"
     >
       ✧
@@ -72,16 +72,16 @@ const content = text[lang];
 
     <!-- タイトル -->
     <h1
-      class="font-title font-semibold leading-[0.62] tracking-[-0.075em]"
+      class="font-title font-semibold leading-[0.64] tracking-[-0.075em] sm:leading-[0.62]"
     >
       <span
-        class="block rotate-[-3deg] text-[95px] text-[#2D2A2B] drop-shadow-[4px_5px_0_rgba(255,255,255,0.65)] sm:text-[120px] md:text-[155px]"
+        class="block rotate-[-3deg] text-[76px] text-[#2D2A2B] drop-shadow-[3px_4px_0_rgba(255,255,255,0.65)] min-[390px]:text-[88px] sm:text-[120px] sm:drop-shadow-[4px_5px_0_rgba(255,255,255,0.65)] md:text-[155px]"
       >
         Port
       </span>
 
       <span
-        class="ml-3 block rotate-[1deg] text-[88px] text-[#EF7588] drop-shadow-[4px_5px_0_rgba(255,255,255,0.65)] sm:text-[118px] md:text-[153px]"
+        class="ml-2 block rotate-[1deg] text-[72px] text-[#EF7588] drop-shadow-[3px_4px_0_rgba(255,255,255,0.65)] min-[390px]:text-[82px] sm:ml-3 sm:text-[118px] sm:drop-shadow-[4px_5px_0_rgba(255,255,255,0.65)] md:text-[153px]"
       >
         folio
       </span>
@@ -89,28 +89,35 @@ const content = text[lang];
 
     <!-- 名前 -->
     <div
-      class="mt-8 rounded-full bg-white/80 px-8 py-2 text-sm font-semibold tracking-[0.12em] text-[#EF7588] shadow-sm"
+      class="mt-7 rounded-full bg-white/80 px-6 py-2 text-xs font-semibold tracking-[0.12em] text-[#EF7588] shadow-sm sm:mt-8 sm:px-8 sm:text-sm"
     >
       {content.name}
     </div>
 
     <!-- 説明 -->
     <p
-      class="mt-7 text-[11px] font-medium tracking-[0.12em] text-[#2D2A2B]/65 sm:text-[14px] sm:tracking-[0.14em]"
+      class="mt-5 max-w-[290px] text-[10px] font-medium leading-5 tracking-[0.08em] text-[#2D2A2B]/65 min-[390px]:max-w-none min-[390px]:text-[11px] sm:mt-7 sm:text-[14px] sm:tracking-[0.14em]"
     >
       {content.category}
     </p>
   </div>
 
+  <!-- スクロールボタン -->
   <a
     href="#profile"
-    class="group absolute bottom-30 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-3"
+    class="group absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center sm:bottom-8"
     aria-label="Scroll to profile section"
   >
     <CircleChevronDown
+      size={52}
+      strokeWidth={1.5}
+      class="scroll-arrow text-[#EF7588] transition-transform duration-300 group-hover:scale-110 sm:hidden"
+    />
+
+    <CircleChevronDown
       size={65}
       strokeWidth={1.5}
-      class="scroll-arrow text-[#EF7588] transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1"
+      class="scroll-arrow hidden text-[#EF7588] transition-transform duration-300 group-hover:scale-110 sm:block"
     />
   </a>
 </section>
@@ -138,6 +145,12 @@ const content = text[lang];
   @media (prefers-reduced-motion: reduce) {
     .scroll-arrow {
       animation: none;
+    }
+  }
+
+  @media (max-height: 680px) {
+    #home {
+      min-height: 620px;
     }
   }
 </style>

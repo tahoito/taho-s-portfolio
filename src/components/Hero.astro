@@ -1,284 +1,143 @@
 ---
-interface Props {
-  t: {
-    hero: {
-      playlist: string;
-      messages: string[];
-    };
-  };
+import { CircleChevronDown } from "lucide-astro";
 
+interface Props {
   lang: "ja" | "en";
 }
 
-const { t, lang } = Astro.props;
+const { lang } = Astro.props;
+
+const text = {
+  ja: {
+    name: "TAHO ITO",
+    category: "Full Stack Developer ・ UI Designer ・ Creator",
+    scroll: "SCROLL",
+  },
+  en: {
+    name: "TAHO ITO",
+    category: "Full Stack Developer ・ UI Designer ・ Creator",
+    scroll: "SCROLL",
+  },
+};
+
+const content = text[lang];
 ---
 
 <section
   id="home"
-  class="relative mt-16 flex min-h-[calc(100dvh-4rem)] w-full items-center justify-center overflow-hidden bg-cherry-bg px-5 py-16"
+  class="relative mt-16 flex min-h-[calc(100dvh-4rem)] w-full items-center justify-center overflow-hidden bg-[#F9DDE5] px-5 py-20"
 >
-  <div class="w-full max-w-[1050px]">
-    <!-- メインタイトル -->
-    <div class="text-center">
-      <p
-        class="font-title text-[20px] tracking-[0.12em] text-cherry sm:text-[26px]"
-      >
-        Welcome to
-      </p>
+  <!-- 左下の曲線 -->
+  <div
+    class="pointer-events-none absolute -bottom-28 -left-24 h-72 w-72 rounded-full border-[3px] border-[#EF7588]/25"
+  ></div>
 
-      <h1
-        class="mt-2 font-title text-[40px] font-medium leading-[0.95] text-text-title sm:text-[60px] md:text-[75px]"
-      >
-        Taho's Portfolio
-      </h1>
-    </div>
+  <!-- 右上の曲線 -->
+  <div
+    class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full border-[3px] border-[#EF7588]/25"
+  ></div>
 
-    <!-- 音楽プレイヤー -->
-    <div
-      class="mt-14 flex w-full flex-col items-center gap-8 md:mt-20 md:grid md:grid-cols-[260px_minmax(0,1fr)_90px] md:items-center md:gap-10"
-      data-player
-      data-messages={JSON.stringify(t.hero.messages)}
+  <!-- 左の小さな星 -->
+  <span
+    class="pointer-events-none absolute left-[10%] top-[32%] text-3xl text-[#F4C95D]"
+    aria-hidden="true"
+  >
+    ✦
+  </span>
+
+  <!-- 右の小さな星 -->
+  <span
+    class="pointer-events-none absolute right-[11%] top-[36%] text-3xl text-[#EF7588]"
+    aria-hidden="true"
+  >
+    ✦
+  </span>
+
+  <!-- メイン -->
+  <div class="relative z-10 flex flex-col items-center text-center">
+    <!-- タイトル周辺の星 -->
+    <span
+      class="pointer-events-none absolute -left-8 top-4 rotate-[-12deg] text-3xl text-[#F4C95D] sm:-left-14"
+      aria-hidden="true"
     >
-      <!-- 左：プレイリスト画像 -->
-      <div
-        class="aspect-square w-full max-w-[260px] overflow-hidden rounded-[28px] bg-cherry shadow-[0_18px_45px_rgba(239,117,136,0.2)]"
+      ✧
+    </span>
+
+    <span
+      class="pointer-events-none absolute -right-8 bottom-24 rotate-12 text-2xl text-[#EF7588] sm:-right-14"
+      aria-hidden="true"
+    >
+      ✧
+    </span>
+
+    <!-- タイトル -->
+    <h1
+      class="font-title font-semibold leading-[0.62] tracking-[-0.075em]"
+    >
+      <span
+        class="block rotate-[-3deg] text-[95px] text-[#2D2A2B] drop-shadow-[4px_5px_0_rgba(255,255,255,0.65)] sm:text-[120px] md:text-[155px]"
       >
-        <!--
-        <img
-          src="/images/playlist-cover.png"
-          alt="Taho's Playlist"
-          class="h-full w-full object-cover"
-        />
-        -->
-      </div>
+        Port
+      </span>
 
-      <!-- 中央：メッセージとコントロール -->
-      <div
-        class="flex w-full min-w-0 flex-col items-center text-center md:items-start md:text-left"
+      <span
+        class="ml-3 block rotate-[1deg] text-[88px] text-[#EF7588] drop-shadow-[4px_5px_0_rgba(255,255,255,0.65)] sm:text-[118px] md:text-[153px]"
       >
-        <p
-          class="text-[13px] font-semibold tracking-[0.2em] text-cherry sm:text-[15px]"
-        >
-          {t.hero.playlist}
-        </p>
+        folio
+      </span>
+    </h1>
 
-        <!-- 切り替わるメッセージ -->
-        <div
-          class="mt-3 flex min-h-[54px] w-full min-w-0 items-center justify-center md:justify-start"
-        >
-          <h2
-            class="w-full overflow-hidden whitespace-nowrap text-ellipsis font-title text-[20px] font-medium leading-[1.2] text-text-title transition duration-300 sm:text-[25px] md:text-[27px] lg:text-[30px]"
-            data-message
-          >
-            {t.hero.messages[0]}
-          </h2>
-        </div>
-
-        <!-- 番号と進行バー -->
-        <div class="mt-4 flex w-full items-center gap-4">
-          <span
-            class="w-[34px] shrink-0 text-[13px] text-text"
-            data-current-number
-          >
-            01
-          </span>
-
-          <div class="h-[5px] flex-1 overflow-hidden rounded-full bg-white/80">
-            <div
-              class="h-full rounded-full bg-cherry transition-all duration-300"
-              style={`width: ${100 / t.hero.messages.length}%`}
-              data-progress
-            >
-            </div>
-          </div>
-
-          <span
-            class="w-[34px] shrink-0 text-right text-[13px] text-text"
-            data-total-number
-          >
-            {String(t.hero.messages.length).padStart(2, "0")}
-          </span>
-        </div>
-
-        <!-- 前・再生・次 -->
-        <div
-          class="mt-6 flex w-full items-center justify-center gap-7 md:justify-start"
-        >
-          <!-- 前へ -->
-          <button
-            type="button"
-            class="group flex h-[58px] w-[58px] items-center justify-center text-text transition duration-300 hover:scale-110 hover:text-cherry"
-            aria-label={lang === "ja" ? "前のメッセージ" : "Previous message"}
-            data-previous
-          >
-            <svg
-              class="h-8 w-8 transition duration-300 group-hover:-translate-x-1"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M7 5H9V19H7V5ZM10 12L19 5V19L10 12Z" />
-            </svg>
-          </button>
-
-          <!-- Aboutへ移動 -->
-          <a
-            href="#about"
-            class="group flex h-[58px] w-[58px] items-center justify-center rounded-full bg-cherry text-white shadow-sm transition duration-300 hover:scale-110 hover:shadow-md"
-            aria-label={lang === "ja" ? "Aboutへ移動" : "Go to About section"}
-          >
-            <svg
-              class="ml-1 h-7 w-7 transition duration-300 group-hover:scale-110"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M8 5V19L19 12L8 5Z" />
-            </svg>
-          </a>
-
-          <!-- 次へ -->
-          <button
-            type="button"
-            class="group flex h-[58px] w-[58px] items-center justify-center text-text transition duration-300 hover:scale-110 hover:text-cherry"
-            aria-label={lang === "ja" ? "次のメッセージ" : "Next message"}
-            data-next
-          >
-            <svg
-              class="h-8 w-8 transition duration-300 group-hover:translate-x-1"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M15 5H17V19H15V5ZM14 12L5 19V5L14 12Z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- 右：音波 -->
-      <div
-        class="flex h-[100px] items-center justify-center gap-[7px] md:justify-end"
-        aria-hidden="true"
-      >
-        <span class="h-[34px] w-[8px] rounded-full bg-cherry/55"></span>
-        <span class="h-[52px] w-[8px] rounded-full bg-cherry"></span>
-        <span class="h-[42px] w-[8px] rounded-full bg-cherry/70"></span>
-        <span class="h-[60px] w-[8px] rounded-full bg-cherry"></span>
-        <span class="h-[30px] w-[8px] rounded-full bg-cherry/55"></span>
-      </div>
+    <!-- 名前 -->
+    <div
+      class="mt-8 rounded-full bg-white/80 px-8 py-2 text-sm font-semibold tracking-[0.12em] text-[#EF7588] shadow-sm"
+    >
+      {content.name}
     </div>
+
+    <!-- 説明 -->
+    <p
+      class="mt-7 text-[11px] font-medium tracking-[0.12em] text-[#2D2A2B]/65 sm:text-[14px] sm:tracking-[0.14em]"
+    >
+      {content.category}
+    </p>
   </div>
 
-  <!-- 背景装飾 -->
-  <span
-    class="pointer-events-none absolute left-[6%] top-[18%] hidden text-[34px] text-star md:block"
-    aria-hidden="true"
+  <a
+    href="#profile"
+    class="group absolute bottom-30 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-3"
+    aria-label="Scroll to profile section"
   >
-    ✦
-  </span>
-
-  <span
-    class="pointer-events-none absolute right-[8%] top-[25%] hidden text-[30px] text-cherry md:block"
-    aria-hidden="true"
-  >
-    ✦
-  </span>
-
-  <span
-    class="pointer-events-none absolute bottom-[10%] right-[12%] hidden text-[30px] text-accent-blue md:block"
-    aria-hidden="true"
-  >
-    ✦
-  </span>
+    <CircleChevronDown
+      size={65}
+      strokeWidth={1.5}
+      class="scroll-arrow text-[#EF7588] transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1"
+    />
+  </a>
 </section>
 
-<script>
-  const players = document.querySelectorAll<HTMLElement>("[data-player]");
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
 
-  players.forEach((player) => {
-    let messages: string[] = [];
-
-    try {
-      messages = JSON.parse(player.dataset.messages ?? "[]");
-    } catch (error) {
-      console.error("Failed to read hero messages:", error);
-      return;
+  @keyframes floatDown {
+    0%,
+    100% {
+      transform: translateY(0);
     }
 
-    if (messages.length === 0) {
-      return;
+    50% {
+      transform: translateY(6px);
     }
+  }
 
-    const message =
-      player.querySelector<HTMLElement>("[data-message]");
+  .scroll-arrow {
+    animation: floatDown 1.8s ease-in-out infinite;
+  }
 
-    const currentNumber =
-      player.querySelector<HTMLElement>("[data-current-number]");
-
-    const totalNumber =
-      player.querySelector<HTMLElement>("[data-total-number]");
-
-    const progress =
-      player.querySelector<HTMLElement>("[data-progress]");
-
-    const previousButton =
-      player.querySelector<HTMLButtonElement>("[data-previous]");
-
-    const nextButton =
-      player.querySelector<HTMLButtonElement>("[data-next]");
-
-    let currentIndex = 0;
-    let animationTimer: number | undefined;
-
-    const updateMessage = () => {
-      if (currentNumber) {
-        currentNumber.textContent = String(currentIndex + 1).padStart(2, "0");
-      }
-
-      if (totalNumber) {
-        totalNumber.textContent = String(messages.length).padStart(2, "0");
-      }
-
-      if (progress) {
-        const progressWidth =
-          ((currentIndex + 1) / messages.length) * 100;
-
-        progress.style.width = `${progressWidth}%`;
-      }
-
-      if (!message) {
-        return;
-      }
-
-      message.style.opacity = "0";
-      message.style.transform = "translateY(6px)";
-
-      if (animationTimer) {
-        window.clearTimeout(animationTimer);
-      }
-
-      animationTimer = window.setTimeout(() => {
-        message.textContent = messages[currentIndex];
-        message.style.opacity = "1";
-        message.style.transform = "translateY(0)";
-      }, 180);
-    };
-
-    previousButton?.addEventListener("click", () => {
-      currentIndex =
-        (currentIndex - 1 + messages.length) % messages.length;
-
-      updateMessage();
-    });
-
-    nextButton?.addEventListener("click", () => {
-      currentIndex =
-        (currentIndex + 1) % messages.length;
-
-      updateMessage();
-    });
-
-    updateMessage();
-  });
-</script>
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-arrow {
+      animation: none;
+    }
+  }
+</style>
